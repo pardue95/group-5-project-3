@@ -21,6 +21,12 @@ const GiftSchema = new Schema({
     type: String,
     required: true,
   },
+  purchased: {
+    type: Boolean,
+  },
+  gifterId: {
+    type: String
+  }
 });
 
 module.exports = GiftSchema;
