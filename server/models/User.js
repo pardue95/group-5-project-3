@@ -1,10 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-// import schema from Gift.js
-const GiftSchema = require("./Gift");
-const Wishlist = require("./Wishlist");
-
 const userSchema = new Schema(
   {
     username: {
@@ -24,10 +20,7 @@ const userSchema = new Schema(
     },
     mother: {
       type: Boolean,
-      required: true
-    },
-    gender: {
-      type: String,
+      // required: true
     },
     wishlist: [{
       type: Schema.Types.ObjectId,
@@ -35,12 +28,6 @@ const userSchema = new Schema(
     }]
     // set savedGifts to be an array of data that adheres to the GiftSchema
     // savedGifts: [GiftSchema],
-  },
-  // set this to use virtual below
-  {
-    toJSON: {
-      virtuals: true,
-    },
   }
 );
 
@@ -58,11 +45,6 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
-
-// when we query a user, we'll also get another field called `GiftCount` with the number of saved Gifts we have
-userSchema.virtual("GiftCount").get(function () {
-  return this.savedGifts.length;
-});
 
 const User = model("User", userSchema);
 

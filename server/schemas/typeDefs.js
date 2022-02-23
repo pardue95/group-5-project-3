@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     wishlists: [Wishlist]
+    mother: Boolean
   }
 
   type Gift {
@@ -19,6 +20,8 @@ const typeDefs = gql`
     _id: ID
     title: String
     description: String
+    gender: String
+    giftCount: Int
     gifts: [Gift]
     created: String
   }
@@ -37,7 +40,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    wishlists(username: String): [Wishlist]
+    wishlists: [Wishlist]
     wishlist(_id: ID!): Wishlist
     gifts: [Gift]
   }
