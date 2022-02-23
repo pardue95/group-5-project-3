@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Gift, Wishlist } = require("../models")
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -15,6 +15,22 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+    gifts: async (parent, args) => {
+      return Gift.find();
+    },
+    gift: async (parent, { _id }) => {
+      return Gift.findOne({ _id });
+    },
+    wishlists: async (parent, args) => {
+      return Gift.find()
+        .select('-__v')
+        .populate('gifts');
+    },
+    wishlist: async (parent, { _id }) => {
+      return Gift.findOne({ _id })
+        .select('-__v')
+        .populate('gifts');
+    }
   },
 
   Mutation: {

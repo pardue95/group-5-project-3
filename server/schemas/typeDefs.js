@@ -42,6 +42,7 @@ const typeDefs = gql`
     users: [User]
     wishlists: [Wishlist]
     wishlist(_id: ID!): Wishlist
+    gift(_id: ID!): Gift
     gifts: [Gift]
   }
 
