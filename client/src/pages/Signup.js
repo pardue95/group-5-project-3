@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+import { HeartSwitch } from '@anatoliygatt/heart-switch';
 
 import Auth from "../utils/auth";
 
@@ -9,6 +10,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    mother: false
   });
   const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -36,6 +38,9 @@ const Signup = () => {
       console.error(e);
     }
   };
+
+  // For Heart Slider
+  const [checked, setChecked] = useState(false);
 
   return (
     <main className="flex-row justify-center mb-4">
@@ -71,6 +76,29 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
+              <div>
+                <h2>Are you a Mother?</h2>
+                <HeartSwitch
+                  size="lg"
+                  inactiveTrackFillColor="#cffafe"
+                  inactiveTrackStrokeColor="#22d3ee"
+                  activeTrackFillColor="#06b6d4"
+                  activeTrackStrokeColor="#0891b2"
+                  inactiveThumbColor="#ecfeff"
+                  activeThumbColor="#ecfeff"
+                  checked={checked}
+                  onChange={(event) => {
+                    setChecked(event.target.checked);
+                    formState.mother = !checked;
+                  }}
+                />
+                {/* NEED MESSAGE - lets them know right is mother */}
+                {console.log(formState)}
+
+
+              </div>
+
+
               <button className="btn d-block w-100" type="submit">
                 Submit
               </button>
