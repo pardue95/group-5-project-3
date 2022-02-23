@@ -42,6 +42,15 @@ const Signup = () => {
   // For Heart Slider
   const [checked, setChecked] = useState(false);
 
+  // Conditional Message based on user type
+  const checkMotherhood = () => {
+    if (checked) {
+      return <p>Congratulations!! Your going to be a Mother!</p>;
+    } else {
+      return <p>Gifter - Thank you!</p>;
+    }
+  }
+
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-md-6">
@@ -92,7 +101,7 @@ const Signup = () => {
                     formState.mother = !checked;
                   }}
                 />
-                {/* NEED MESSAGE - lets them know right is mother */}
+                {checkMotherhood()}
 
 
               </div>
