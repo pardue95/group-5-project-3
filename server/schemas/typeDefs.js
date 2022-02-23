@@ -2,19 +2,28 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID!
-    username: String!
+    _id: ID
+    username: String
     email: String
-    GiftCount: Int
-    savedGifts: [Gift]
+    wishlists: [Wishlist]
+    mother: Boolean
   }
 
   type Gift {
-    GiftId: ID!
+    _id: ID
     description: String
     image: String
-    link: String
-    title: String!
+    title: String
+  }
+
+  type Wishlist {
+    _id: ID
+    title: String
+    description: String
+    gender: String
+    giftCount: Int
+    gifts: [Gift]
+    created: String
   }
 
   type Auth {
@@ -23,15 +32,18 @@ const typeDefs = gql`
   }
 
   input GiftInput {
-    description: String!
-    GiftId: String!
+    description: String
     image: String
-    link: String
-    title: String!
+    title: String
   }
 
   type Query {
     me: User
+    users: [User]
+    wishlists: [Wishlist]
+    wishlist(_id: ID!): Wishlist
+    gift(_id: ID!): Gift
+    gifts: [Gift]
   }
 
   type Mutation {
