@@ -93,7 +93,6 @@ const Signup = () => {
                   }}
                 />
                 {/* NEED MESSAGE - lets them know right is mother */}
-                {console.log(formState)}
 
 
               </div>

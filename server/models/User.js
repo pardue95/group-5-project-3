@@ -25,6 +25,9 @@ const userSchema = new Schema(
       type: Boolean,
       required: true
     },
+    gender: {
+      type: String,
+    },
     // set savedGifts to be an array of data that adheres to the GiftSchema
     savedGifts: [GiftSchema],
   },
