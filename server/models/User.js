@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 // import schema from Gift.js
 const GiftSchema = require("./Gift");
+const Wishlist = require("./Wishlist");
 
 const userSchema = new Schema(
   {
@@ -21,8 +22,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    mother: {
+      type: Boolean,
+      required: true
+    },
+    gender: {
+      type: String,
+    },
+    wishlist: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Wishlist'
+    }]
     // set savedGifts to be an array of data that adheres to the GiftSchema
-    savedGifts: [GiftSchema],
+    // savedGifts: [GiftSchema],
   },
   // set this to use virtual below
   {
