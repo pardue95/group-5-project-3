@@ -27,7 +27,7 @@ const resolvers = {
         .populate('gifts');
     },
     wishlist: async (parent, { _id }) => {
-      return Gift.findOne({ _id })
+      return Wishlist.findOne({ _id })
         .select('-__v')
         .populate('gifts');
     }
