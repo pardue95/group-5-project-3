@@ -15,16 +15,16 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    gifts: async (parent, args) => {
+    bgifts: async (parent, args) => {
       return Gift.find();
     },
-    gift: async (parent, { _id }) => {
+    bgift: async (parent, { _id }) => {
       return Gift.findOne({ _id });
     },
     wishlists: async (parent, args) => {
       return Wishlist.find()
         .select('-__v')
-        .populate('gifts');
+        .populate('presents');
     },
     // user: async (parent, { username }) => {
     //   return User.findOne({ username })
@@ -34,7 +34,7 @@ const resolvers = {
     wishlist: async (parent, { _id }) => {
       return Wishlist.findOne({ _id })
         .select('-__v')
-        .populate('gifts');
+        .populate('presents');
     }
   },
 

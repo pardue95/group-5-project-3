@@ -22,7 +22,7 @@ const typeDefs = gql`
     description: String
     gender: String
     giftCount: Int
-    gifts: [Gift]
+    presents: [Gift]
     created: String
   }
 
@@ -42,8 +42,8 @@ const typeDefs = gql`
     users: [User]
     wishlists: [Wishlist]
     wishlist(_id: ID!): Wishlist
-    gift(_id: ID!): Gift
-    gifts: [Gift]
+    bgift(_id: ID!): Gift
+    bgifts: [Gift]
   }
 
   type Mutation {
