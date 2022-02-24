@@ -2,6 +2,7 @@ const faker = require('faker');
 
 const db = require('../config/connection');
 const { Gift, User, Wishlist } = require('../models');
+const dateFormat = require('../utils/dateFormat');
 
 db.once('open', async () => {
     // Deletes Existing
@@ -43,10 +44,12 @@ db.once('open', async () => {
 
     // Create Wishlist Data
     const wishlistData = [];
+    const date = faker.date.past(2);
 
     for (let i = 0; i < userData.length; i++) {
         const title = faker.lorem.words();
         const description = faker.lorem.sentence();
+        const created = dateFormat(date);
         var gender = '';
         if (i % 2 === 0) {
             gender = 'girl';
@@ -59,12 +62,12 @@ db.once('open', async () => {
             gifts.push(giftData[i]);
         }
 
-        wishlistData.push({ title, description, gender, gifts });
+        wishlistData.push({ title, description, created, gender, gifts });
     }
 
     const createdWishlists = await Wishlist.collection.insertMany(wishlistData);
 
-    console.log(wishlistData);
+    console.log(wishlistData[0]);
     console.log('all done!');
     process.exit(0);
 
