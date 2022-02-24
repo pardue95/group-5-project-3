@@ -26,6 +26,11 @@ const resolvers = {
         .select('-__v')
         .populate('gifts');
     },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('wishlist');
+    },
     wishlist: async (parent, { _id }) => {
       return Gift.findOne({ _id })
         .select('-__v')
