@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_GIFTS = gql`
+  {
+    bgifts {
+      _id
+      description
+      title
+      image
+    }
+  }
+`;
+
 
 export const QUERY_USER = gql`
   {

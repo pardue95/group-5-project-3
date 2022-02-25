@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 const Wishlist = ({ user }) => {
     if (!user.userWishlists.length) {
         return (
-            <h3>No Saved Gifts Yet</h3>
-            // <Link to="/">
-            //  Add Gifts
-            // </Link>
+            <div>
+                <h3>No Saved Gifts Yet</h3>
+                <Link to="/addWishlist">
+                    <button>Create A Wishlist</button>
+                </Link>
+            </div>
+
         );
     }
 

@@ -5,13 +5,11 @@ import Wishlist from '../components/Wishlist';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import { SAVE_GIFT } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Profile = (props) => {
     const { userParam } = useParams();
 
-    const [saveGift] = useMutation(SAVE_GIFT);
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
     });
@@ -36,15 +34,6 @@ const Profile = (props) => {
         );
     }
 
-    const handleClick = async () => {
-        try {
-            await saveGift({
-                variables: { id: user._id },
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    };
 
     return (
         <div>
