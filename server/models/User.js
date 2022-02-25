@@ -22,12 +22,10 @@ const userSchema = new Schema(
       type: Boolean,
       // required: true
     },
-    wishlist: [{
+    userWishlists: [{
       type: Schema.Types.ObjectId,
       ref: 'Wishlist'
     }]
-    // set savedGifts to be an array of data that adheres to the GiftSchema
-    // savedGifts: [GiftSchema],
   }
 );
 
