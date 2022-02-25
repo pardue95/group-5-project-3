@@ -90,16 +90,12 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    // removes a gift from a Wishlist. Must provide Gift _id
+    // removes a gift from a Wishlist. Must provide Wishlist _id and Gift _id
     removeGift: async (parent, { GiftId }, context) => {
-      if (context.userWishlist) {
-        const updatedWishlist = await Wishlist.findOneAndUpdate(
-          { _id: context.userWishlist._id },
-          { $pull: { presents: { GiftId } } },
-          { new: true }
-        );
+      if (context.user) {
+        await Gift.findByIdAndDelete({ _id: GiftId });
 
-        return updatedWishlist;
+        return console.log('Gift removed!');
       }
 
       throw new AuthenticationError("You need to be logged in!");
