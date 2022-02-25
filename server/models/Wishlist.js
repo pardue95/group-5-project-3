@@ -34,8 +34,8 @@ const wishlistSchema = new Schema(
 );
 
 // when we query a wishlist, we'll also get another field called `GiftCount` with the number of saved Gifts we have
-wishlistSchema.virtual("giftCount").get(function () {
-    return this.gifts.length;
+wishlistSchema.virtual("presentCount").get(function () {
+    return this.presents.length;
 });
 
 const Wishlist = model('Wishlist', wishlistSchema);

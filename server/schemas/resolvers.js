@@ -6,14 +6,17 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate('userWishlists');
 
         return userData;
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    users: async (parent, args) => {
+      return User.find();
     },
     bgifts: async (parent, args) => {
       return Gift.find();
@@ -21,7 +24,7 @@ const resolvers = {
     bgift: async (parent, { _id }) => {
       return Gift.findOne({ _id });
     },
-    wishlists: async (parent, args) => {
+    userWishlists: async (parent, args) => {
       return Wishlist.find()
         .select('-__v')
         .populate('presents');
@@ -31,7 +34,7 @@ const resolvers = {
     //     .select('-__v -password')
     //     .populate('wishlist');
     // },
-    wishlist: async (parent, { _id }) => {
+    userWishlist: async (parent, { _id }) => {
       return Wishlist.findOne({ _id })
         .select('-__v')
         .populate('presents');
