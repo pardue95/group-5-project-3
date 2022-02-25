@@ -73,7 +73,7 @@ const resolvers = {
       return { token, user };
     },
 
-    // Adds a new Wishlist to the userWishlist array of a specific User
+    // Adds a new Wishlist to the userWishlist array of a specific User. Must provide User _id
     addWishlist: async (parent, { userId, title, description, gender }, context) => {
       if (context.user) {
         const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender})
@@ -85,6 +85,17 @@ const resolvers = {
         );
 
         return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // Removes a specific Wishlist. Wishlist _id required
+    removeWishlist: async (parent, { wishlistId }, context) => {
+      if (context.user) {
+        await Wishlist.findByIdAndDelete({ _id: wishlistId });
+
+        return console.log('Wishlist removed!');
       }
 
       throw new AuthenticationError("You need to be logged in!");
@@ -107,7 +118,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    // removes a gift from a Wishlist. Must provide Wishlist _id and Gift _id
+    // removes a gift from a Wishlist. Must provide Gift _id
     removeGift: async (parent, { GiftId }, context) => {
       if (context.user) {
         await Gift.findByIdAndDelete({ _id: GiftId });
