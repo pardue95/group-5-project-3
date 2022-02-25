@@ -7,10 +7,11 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { ChakraProvider } from '@chakra-ui/react'
 
 // import SearchGifts from './pages/SearchGifts';
 // import SavedGifts from './pages/SavedGifts';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -42,21 +43,23 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            {/* <Route exact path="/" component={SearchGifts} />
-            <Route exact path="/saved" component={SavedGifts} /> */}
-            <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
-          </Switch>
-        </>
-      </Router>
-    </ApolloProvider>
+    <ChakraProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              {/* <Route exact path="/" component={SearchGifts} />
+              <Route exact path="/saved" component={SavedGifts} /> */}
+              <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
+            </Switch> 
+          </>
+        </Router>
+      </ApolloProvider>
+    </ChakraProvider>
   );
 }
 
