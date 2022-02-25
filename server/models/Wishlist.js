@@ -14,7 +14,7 @@ const wishlistSchema = new Schema(
         gender: {
             type: String,
         },
-        gifts: [
+        presents: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Gift'

@@ -55,14 +55,14 @@ db.once('open', async () => {
             gender = 'girl';
         } else { gender = 'boy'; }
 
-        const gifts = [];
+        const presents = [];
 
-        // Populate wishlist w/gifts
+        // Populate wishlist w/presents
         for (let i = 0; i < Math.floor(Math.random() * 50); i++) {
-            gifts.push(giftData[i]);
+            presents.push(giftData[i]._id);
         }
 
-        wishlistData.push({ title, description, created, gender, gifts });
+        wishlistData.push({ title, description, created, gender, presents });
     }
 
     const createdWishlists = await Wishlist.collection.insertMany(wishlistData);
