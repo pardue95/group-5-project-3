@@ -73,6 +73,23 @@ const resolvers = {
       return { token, user };
     },
 
+    // Adds a new Wishlist to the userWishlist array of a specific User
+    addWishlist: async (parent, { userId, title, description, gender }, context) => {
+      if (context.user) {
+        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender})
+
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: userId },
+          { $push: { userWishlists: userWishlist } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
     // Adds new gift to the specified wishlist, must provide Wishlist _id
     saveGift: async (parent, { wishlistId, title, description, image }, context) => {
       if (context.user) {
