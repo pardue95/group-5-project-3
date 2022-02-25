@@ -29,10 +29,10 @@ const resolvers = {
         .select('-__v')
         .populate('presents');
     },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username })
+    // user: async (parent, { _id }) => {
+    //   return User.findOne({ _id })
     //     .select('-__v -password')
-    //     .populate('wishlist');
+    //     .populate('ueserWishlist');
     // },
     userWishlist: async (parent, { _id }) => {
       return Wishlist.findOne({ _id })
