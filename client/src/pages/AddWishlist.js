@@ -1,8 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-
 import GiftsList from '../components/GiftsList';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_GIFTS } from '../utils/queries';
 import { SAVE_GIFT } from '../utils/mutations';
@@ -53,7 +51,7 @@ const AddWishlist = (props) => {
         <div>
             <h2>Create a New Wishlist</h2>
             <div>
-                <GiftsList giftList={giftsList}></GiftsList>
+                <GiftsList></GiftsList>
             </div>
         </div>
     );

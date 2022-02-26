@@ -1,33 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-//import { QUERY_GIFTS } from '../utils/queries';
-import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_GIFTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
-const GiftsList = ({ giftsList }) => {
-    // const giftsList = useQuery(QUERY_GIFTS);
+const GiftsList = () => {
 
-    // const handleClick = async () => {
-    //     try {
-    //         await saveGift({
-    //             variables: { id: user._id },
-    //         });
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // };
-    console.log("inside client, src, componenet, giftlist " + { giftsList });
+    const { loading, error, data } = useQuery(QUERY_GIFTS, {
+        data: {},
+    });
+
+    if (loading) return <div>Loading ...</div>;
+    if (error) return <div>Error {error}</div>;
+
+    const potentialGifts = data.bgifts;
+    console.log(potentialGifts);
+
+    // const giftObj = useQuery(QUERY_GIFTS);
+    // const giftArray = giftObj.data;
+    // const potentialGifts = giftArray.bgifts;
+    // console.log(potentialGifts[0]);
+
 
     return (
         <div>
             <h3>This will show Users A List of All the Gifts</h3>
             <h2>And give them the option to Add to their wishlist</h2>
-            {/* {giftsList.map(gift => (
-                <div key={gift.id}>
-                    <p>{gift.titl}</p>
+            {potentialGifts.map(gift => (
+                //console.log(`Gift ID: ${gift._id}  -- Title: ${gift.title} -- Descr: ${gift.description}`)
+                <div key={gift._id}>
+                    <p>{gift.title}</p>
                     <p>{gift.description}</p>
                     <img src={gift.image} alt={gift.image} />
                 </div>
-            ))} */}
+            ))}
         </div>
     );
 };
