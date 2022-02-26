@@ -52,6 +52,10 @@ const typeDefs = gql`
     saveGift(GiftData: GiftInput!): User
     removeGift(GiftId: ID!): User
   }
+
+  type Checkout {
+  session: ID
+}
 `;
 
 module.exports = typeDefs;
