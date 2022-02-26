@@ -16,11 +16,18 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
 
+    // queries a single user, must provide User _id
+    user: async (parent, { _id }) => {
+      return User
+        .findOne({ _id })
+        .select('-__v -password');
+    },
+
     // queries all users
     users: async (parent, args) => {
       return User
         .find()
-        .select('-__v', 'password');
+        .select('-__v -password');
     },
 
     // queries all gifts
