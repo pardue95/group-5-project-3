@@ -14,7 +14,7 @@ export const QUERY_GIFTS = gql`
 
 export const QUERY_USER = gql`
   {
-    me {
+    user {
       username
       _id
       email
@@ -37,23 +37,24 @@ export const QUERY_USER = gql`
   }
 `;
 export const QUERY_USERS = gql`
-{
-  users{
-    _id
-    username
-    email
-    userWishlists {
+  {
+    users {
       _id
-      title
-      description
-      presents {
+      username
+      email
+      userWishlists {
         _id
         title
         description
+        presents {
+          _id
+          title
+          description
+        }
       }
     }
   }
-}`;
+`;
 
 export const QUERY_ME = gql`
   {
