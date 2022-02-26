@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_Gift = gql`
+export const SAVE_GIFT = gql`
   mutation saveGift($GiftData: GiftInput!) {
     saveGift(GiftData: $GiftData) {
       _id
@@ -41,7 +41,7 @@ export const SAVE_Gift = gql`
   }
 `;
 
-export const REMOVE_Gift = gql`
+export const REMOVE_GIFT = gql`
   mutation removeGift($GiftId: ID!) {
     removeGift(GiftId: $GiftId) {
       _id
