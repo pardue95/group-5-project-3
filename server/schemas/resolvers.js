@@ -17,11 +17,11 @@ const resolvers = {
     },
 
     // queries all users
-    users: async () => {
-      return User.find()
-        .select('-__v -password');
+    users: async (parent, args) => {
+      return User
+        .find()
+        .select('-__v', 'password');
     },
-
 
     // queries all gifts
     bgifts: async (parent, args) => {
@@ -78,7 +78,7 @@ const resolvers = {
     // Adds a new Wishlist to the userWishlist array of a specific User. Must provide User _id
     addWishlist: async (parent, { userId, title, description, gender }, context) => {
       if (context.user) {
-        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender })
+        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender})
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: userId },
