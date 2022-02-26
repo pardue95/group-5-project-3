@@ -36,6 +36,24 @@ export const QUERY_USER = gql`
     }
   }
 `;
+export const QUERY_USERS = gql`
+{
+  users{
+    _id
+    username
+    email
+    userWishlists {
+      _id
+      title
+      description
+      presents {
+        _id
+        title
+        description
+      }
+    }
+  }
+}`;
 
 export const QUERY_ME = gql`
   {
@@ -72,4 +90,23 @@ export const QUERY_ME_BASIC = gql`
       gender
     }
   }
+`;
+
+export const QUERY_USERSWISHLISTS = gql`
+{
+  userWishlists {
+    _id
+    title
+    description
+    gender
+    presentCount
+    presents {
+      _id
+      title
+      description
+      image
+    }
+    created
+  }
+}
 `;

@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import { SAVE_GIFT } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const AddWishlist = (props) => {
+    const [description, setDescription] = useState('');
+    const [characterCount, setCharacterCount] = useState(0);
     const { userParam } = useParams();
-    const [saveGift] = useMutation(SAVE_GIFT);
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
     });
     const user = data?.me || data?.user || {};
-
-    // redirect to personal profile page if username is yours
-    // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //     return <Redirect to="/profile" />;
-    // }
 
     if (loading) {
         return <div>Loading...</div>;
@@ -33,21 +28,46 @@ const AddWishlist = (props) => {
         );
     }
 
-    // const handleClick = async () => {
-    //     try {
-    //         await saveGift({
-    //             variables: { id: user._id },
-    //         });
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // };
+    const handleChange = (event) => {
+        if (event.target.value.length <= 280) {
+            setDescription(event.target.value);
+            setCharacterCount(event.target.value.length);
+        }
+    };
+
+    const handleFormSubmit = async (event) => {
+        // event.preventDefault();
+
+        console.log(event);
+
+
+    };
+
 
     return (
         <div>
             <h2>Create a New Wishlist</h2>
+            <form
+                onSubmit={handleFormSubmit}//NOT WORKING
+            >
+                <label for='title'>Wishlist Title:  </label>
+                <input type="text" id='title' name='title' /> <br /><br />
+                <textarea
+                    placeholder='Leave a note for your guests...'
+                    value={description}
+                    onChange={handleChange}
+                ></textarea><br />
+                <label for='gender'>Baby's Gender  </label>
+                <select id='gender' name='gender'>
+                    <option value='Boy'>Boy</option>
+                    <option value='Girl'>Girl</option>
+                    <option value='n/a'>N/A</option>
+                </select>
+            </form>
+            <button type='submit'>Save New Wishlist</button>
+
             <div>
-                <GiftsList></GiftsList>
+                <GiftsList userData={user}></GiftsList>
             </div>
         </div>
     );

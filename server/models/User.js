@@ -24,7 +24,8 @@ const userSchema = new Schema(
     },
     userWishlists: [{
       type: Schema.Types.ObjectId,
-      ref: 'Wishlist'
+      ref: 'Wishlist',
+      default: []
     }]
   }
 );
