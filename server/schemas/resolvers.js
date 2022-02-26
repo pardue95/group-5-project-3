@@ -18,7 +18,9 @@ const resolvers = {
 
     // queries all users
     users: async (parent, args) => {
-      return User.find();
+      return User
+        .find()
+        .select('-__v', 'password');
     },
 
     // queries all gifts
