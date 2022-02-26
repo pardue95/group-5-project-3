@@ -2,20 +2,16 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_GIFTS } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { SAVE_GIFT } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const AddWishlist = (props) => {
     const { userParam } = useParams();
-
     const [saveGift] = useMutation(SAVE_GIFT);
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
     });
-    const giftsList = useQuery(QUERY_GIFTS);
-    console.log(giftsList);
-
     const user = data?.me || data?.user || {};
 
     // redirect to personal profile page if username is yours
@@ -37,15 +33,15 @@ const AddWishlist = (props) => {
         );
     }
 
-    const handleClick = async () => {
-        try {
-            await saveGift({
-                variables: { id: user._id },
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    };
+    // const handleClick = async () => {
+    //     try {
+    //         await saveGift({
+    //             variables: { id: user._id },
+    //         });
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // };
 
     return (
         <div>

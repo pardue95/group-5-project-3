@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_GIFTS = gql`
-  {
+  query {
     bgifts {
       _id
       description

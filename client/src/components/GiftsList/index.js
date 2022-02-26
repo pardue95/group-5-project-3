@@ -1,8 +1,10 @@
 import React from 'react';
 import { QUERY_GIFTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+//import { SAVE_GIFT } from '../utils/mutations';
 
 const GiftsList = () => {
+    //const [saveGift] = useMutation(SAVE_GIFT);
 
     const { loading, error, data } = useQuery(QUERY_GIFTS, {
         data: {},
@@ -12,12 +14,12 @@ const GiftsList = () => {
     if (error) return <div>Error {error}</div>;
 
     const potentialGifts = data.bgifts;
-    console.log(potentialGifts);
 
-    // const giftObj = useQuery(QUERY_GIFTS);
-    // const giftArray = giftObj.data;
-    // const potentialGifts = giftArray.bgifts;
-    // console.log(potentialGifts[0]);
+    const handleClick = async (event) => {
+        console.log("Handle Click");
+        console.log(event.target.name);
+
+    };
 
 
     return (
@@ -26,13 +28,17 @@ const GiftsList = () => {
             <h2>And give them the option to Add to their wishlist</h2>
             {potentialGifts.map(gift => (
                 //console.log(`Gift ID: ${gift._id}  -- Title: ${gift.title} -- Descr: ${gift.description}`)
-                <div key={gift._id}>
-                    <p>{gift.title}</p>
-                    <p>{gift.description}</p>
-                    <img src={gift.image} alt={gift.image} />
-                </div>
-            ))}
-        </div>
+
+                <button class='button' id='giftBox' name={gift._id} onClick={handleClick}>
+                    {gift.title}
+                    <br /> <br />
+                    {gift.description}
+                    {/* <img src={gift.image} alt={gift.image} /> */}
+                </button>
+
+            ))
+            }
+        </div >
     );
 };
 
