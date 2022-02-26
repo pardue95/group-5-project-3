@@ -15,17 +15,20 @@ const UserList = () => {
     console.log(users);
 
     const handleClick = async (event) => {
-        console.log("Handle Click");
-        console.log(event.target.name);
+
     };
 
 
     return (
         <div>
             {users.map(user => (
-                <button class='button' id='userBox' name={user._id} key={user._id} onClick={handleClick}>
-                    {user.username}
-                </button>
+                <Link to={`/profile/${user.username}`} params={user.username}>
+                    <button class='button' id='userBox' name={user._id} key={user._id} onClick={handleClick}>
+                        <h3>{user.username}</h3>
+                        <p>{user.userWishlists.length} Unpuchased Gifts</p>
+                    </button>
+                </Link>
+
             ))
             }
         </div >
