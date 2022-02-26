@@ -22,6 +22,7 @@ const resolvers = {
         .select('-__v -password');
     },
 
+
     // queries all gifts
     bgifts: async (parent, args) => {
       return Gift.find();

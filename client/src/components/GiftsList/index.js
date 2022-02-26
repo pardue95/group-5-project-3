@@ -18,7 +18,6 @@ const GiftsList = (user) => {
     const handleClick = async (event) => {
         console.log("Handle Click");
         console.log(event.target.name);
-
         console.log(user);
     };
 

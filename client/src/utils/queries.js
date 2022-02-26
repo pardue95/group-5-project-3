@@ -92,9 +92,8 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
-export const QUERY_USERSWISHLISTS = gql`
-{
-  userWishlists {
+export const QUERY_USERSWISHLISTS = gql`{
+userWishlists {
     _id
     title
     description
@@ -107,6 +106,5 @@ export const QUERY_USERSWISHLISTS = gql`
       image
     }
     created
-  }
-}
+  }}
 `;
