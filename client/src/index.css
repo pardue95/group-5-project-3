@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#giftBox{
+  box-sizing: content-box;
+  width: 20%;
+  border: solid gray 2px;
+  padding: 5px;
+  margin: 5px;
+  width: 30%;
+  height: 30%;
+  display: inline-block;
+}
+
+.button:hover{
+    background-color: #4CAF50!important; /* Green */
+  color: white!important;
+}
