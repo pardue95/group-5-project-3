@@ -46,7 +46,11 @@ function Navbar() {
               alignItems="center"
             >
              
-              <VisuallyHidden>FULLfill!</VisuallyHidden>
+              <VisuallyHidden>
+              FULLfill! <br />
+              Babies Everywhere!
+              </VisuallyHidden>
+              
             </chakra.a>
             <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
                 FULLfill!
@@ -63,9 +67,7 @@ function Navbar() {
                 variant="ghost"
                 href="/">
                 Baby Gift Registry</Link>
-              <Link 
-                variant="ghost"
-                >Babies Everywhere</Link>
+              
                 {Auth.loggedIn() ? (
                   <>
               <Link 
@@ -124,9 +126,6 @@ function Navbar() {
 
                 <Link w="full" variant="ghost">
                   Baby Gift Registry
-                </Link>
-                <Link w="full" variant="ghost">
-                  Babies Everywhere
                 </Link>
                 <Link w="full" variant="ghost">
                   Me

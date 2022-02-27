@@ -13,21 +13,21 @@ function Footer() {
     return (
         <Flex fluid className='footer'>
             <Box>
-                <Text md='4' className='footer-copy'>
-                    <h3>Designed and Developed by John Nguyen</h3>
+                <Text size='md' className='footer-copy'>
+                    Designed and Developed by Group 5
                 </Text>
-                <Text md='4' className='footer-copy'>
+                <Text size='md' className='footer-copy'>
                     <h3>Copyright © {year}</h3>
                 </Text>
-                <Text md='4' className='footer-social'>
+                <Text size='md' className='footer-social'>
                     <ul className='footer-icons'>
                         <li className='social-icons'>
                             <a
-                                href="https://github.com/JoNoC0"
+                                href="https://github.com/pardue95/group-5-project-3"
                                 style={{ color: "white" }}
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                alt='JoNoC0 GitHub Page'
+                                alt='Baby Registry GitHub Page'
                             >
                                 <AiFillGithub />
                             </a>

@@ -8,9 +8,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ChakraProvider } from '@chakra-ui/react'
+import theme from "../src/theme";
 
-// import SearchGifts from './pages/SearchGifts';
-// import SavedGifts from './pages/SavedGifts';
 import './App.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -46,6 +45,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ChakraProvider theme={theme}>
     <ApolloProvider client={client}>
       <Router>
         <>
@@ -61,8 +61,10 @@ function App() {
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
+        <Footer />
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
   );
 }
 
