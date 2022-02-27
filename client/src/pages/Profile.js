@@ -8,11 +8,11 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-    const { username: userParam } = useParams();
-    console.log("User Params: " + userParam);
+    const { id: selectedUserID } = useParams();
+    console.log("User Params: " + selectedUserID);
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
+    const { loading, data } = useQuery(selectedUserID ? QUERY_USER : QUERY_ME, {
+        variables: { _id: selectedUserID },
     });
 
     console.log(data);
@@ -21,7 +21,7 @@ const Profile = () => {
     const user = data?.me || data?.user || {};
 
     // redirect to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === selectedUserID) {
         return <Redirect to="/profile" />;
     }
 
@@ -43,7 +43,7 @@ const Profile = () => {
         <div>
             <div className="flex-row mb-3">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile.
                 </h2>
 
                 {/* {user && (
