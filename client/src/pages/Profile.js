@@ -12,7 +12,7 @@ const Profile = () => {
     console.log("User Params: " + selectedUserID);
 
     const { loading, data } = useQuery(selectedUserID ? QUERY_USER : QUERY_ME, {
-        variables: { _id: selectedUserID },
+        variables: { _id: selectedUserID }
     });
 
     console.log(data);

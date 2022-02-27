@@ -11,31 +11,29 @@ export const QUERY_GIFTS = gql`
   }
 `;
 
-
 export const QUERY_USER = gql`
-  {
-    user(_id: ID) {
-      username
+{
+  user(_id: id) {
+    username
+    _id
+    email
+    mother
+    userWishlists {
       _id
-      email
-      mother
-      userWishlists {
+      title
+      description
+      gender
+      created
+      presents {
         _id
         title
         description
-        gender
-        created
-        presents {
-          _id
-          title
-          description
-          image
-        }
-
+        image
       }
+
     }
   }
-`;
+}`;
 export const QUERY_USERS = gql`
   {
     users {

@@ -8,6 +8,9 @@ import Auth from '../utils/auth';
 const AddWishlist = (props) => {
     const [description, setDescription] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
+    const [title, setTitle] = useState('');
+    const [titleCount, setTitleCount] = useState(0);
+
     const { userParam } = useParams();
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
@@ -30,17 +33,25 @@ const AddWishlist = (props) => {
         );
     }
 
-    const handleChange = (event) => {
+    const handleDescriptionChange = (event) => {
         if (event.target.value.length <= 280) {
             setDescription(event.target.value);
             setCharacterCount(event.target.value.length);
         }
     };
+    const handleTitleChange = (event) => {
+        if (event.target.value.length <= 280) {
+            setTitle(event.target.value);
+            setTitleCount(event.target.value.length);
+        }
+    };
 
     const handleFormSubmit = async (event) => {
         // event.preventDefault();
-
-        console.log(event);
+        const selectedGender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].innerHTML;
+        console.log("Title: " + title);
+        console.log("Description: " + description);
+        console.log("Gender: " + selectedGender);
 
 
     };
@@ -49,15 +60,13 @@ const AddWishlist = (props) => {
     return (
         <div>
             <h2>Create a New Wishlist</h2>
-            <form
-                onSubmit={handleFormSubmit}//NOT WORKING
-            >
+            <form>
                 <label for='title'>Wishlist Title:  </label>
-                <input type="text" id='title' name='title' /> <br /><br />
+                <input type="text" id='title' name='title' value={title} onChange={handleTitleChange} /> <br /><br />
                 <textarea
                     placeholder='Leave a note for your guests...'
                     value={description}
-                    onChange={handleChange}
+                    onChange={handleDescriptionChange}
                 ></textarea><br />
                 <label for='gender'>Baby's Gender  </label>
                 <select id='gender' name='gender'>
@@ -66,7 +75,7 @@ const AddWishlist = (props) => {
                     <option value='n/a'>N/A</option>
                 </select>
             </form>
-            <button type='submit'>Save New Wishlist</button>
+            <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
 
             <div>
                 <GiftsList userData={user}></GiftsList>

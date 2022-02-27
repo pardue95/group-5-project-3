@@ -22,7 +22,7 @@ const UserList = () => {
     return (
         <div>
             {users.map(user => (
-                <Link to={`/profile/${user._id}`} params={user.username}>
+                <Link to={`/profile/${user._id}`} params={user._id}>
                     <button class='button' id='userBox' name={user._id} key={user._id} onClick={handleClick}>
                         <h3>{user.username}</h3>
                         <p>{user.userWishlists.length} Unpuchased Gifts</p>
