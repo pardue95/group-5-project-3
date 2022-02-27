@@ -14,7 +14,7 @@ export const QUERY_GIFTS = gql`
 
 export const QUERY_USER = gql`
   {
-    user {
+    user(_id: ID) {
       username
       _id
       email
