@@ -12,6 +12,8 @@ const AddWishlist = (props) => {
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
     });
+    console.log("Data AddWishlist:" + data);
+
     const user = data?.me || data?.user || {};
 
     if (loading) {
