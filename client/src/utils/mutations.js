@@ -24,36 +24,42 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_Gift = gql`
-  mutation saveGift($GiftData: GiftInput!) {
-    saveGift(GiftData: $GiftData) {
-      _id
-      username
-      email
-      savedGifts {
-        GiftId
-        image
-        description
+export const SAVE_GIFT = gql`
+  mutation saveGift($wishlistId: ID!, $title: String!, $description: String! $image: String!) {
+    saveGift(wishlistId: $wishlistId, title: $title, description: $description, image: $image) {
+    _id
+    title
+    description
+      presents {
+        _id
         title
-        link
+        description
+        image
       }
     }
   }
 `;
 
-export const REMOVE_Gift = gql`
+export const REMOVE_GIFT = gql`
   mutation removeGift($GiftId: ID!) {
     removeGift(GiftId: $GiftId) {
       _id
-      username
-      email
-      savedGifts {
-        GiftId
-        image
-        description
-        title
-        link
-      }
+    }
+  }
+`;
+
+export const SAVE_WISHLIST = gql `
+  mutation addWishlist($userId: ID!, $title: String!, $description: String! $gender: String!) {
+    addWishlist(userId: $userId, title: $title, description: $description, gender: $gender) {
+      _id
+    }
+  }
+`;
+
+export const REMOVE_WISHLIST = gql `
+  mutation removeWishlist($wishlistId: ID!) {
+    removeWishlist(wishlistId: $wishlistId) {
+      _id
     }
   }
 `;

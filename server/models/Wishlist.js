@@ -17,7 +17,8 @@ const wishlistSchema = new Schema(
         presents: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Gift'
+                ref: 'Gift',
+                default: []
             }
         ],
         created: {

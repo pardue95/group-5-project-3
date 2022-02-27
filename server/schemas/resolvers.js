@@ -15,25 +15,39 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    users: async (parent, args) => {
-      return User.find();
+
+    // queries a single user, must provide User _id
+    user: async (parent, { _id }) => {
+      return User
+        .findOne({ _id })
+        .select('-__v -password');
     },
+
+    // queries all users
+    users: async (parent, args) => {
+      return User
+        .find()
+        .select('-__v -password');
+    },
+
+    // queries all gifts
     bgifts: async (parent, args) => {
       return Gift.find();
     },
+
+    // queries one specific gift, must provide Gift _id
     bgift: async (parent, { _id }) => {
       return Gift.findOne({ _id });
     },
+
+    // queries all wishlists
     userWishlists: async (parent, args) => {
       return Wishlist.find()
         .select('-__v')
         .populate('presents');
     },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username })
-    //     .select('-__v -password')
-    //     .populate('wishlist');
-    // },
+
+    // queries all wishlists, must provide Wishlist _id
     userWishlist: async (parent, { _id }) => {
       return Wishlist.findOne({ _id })
         .select('-__v')
@@ -42,12 +56,15 @@ const resolvers = {
   },
 
   Mutation: {
+    // Creates a new user
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
+
+    // Logs a user in
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -64,11 +81,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveGift: async (parent, { GiftData }, context) => {
+
+    // Adds a new Wishlist to the userWishlist array of a specific User. Must provide User _id
+    addWishlist: async (parent, { userId, title, description, gender }, context) => {
       if (context.user) {
+        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender})
+
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { savedGifts: GiftData } },
+          { _id: userId },
+          { $push: { userWishlists: userWishlist } },
           { new: true }
         );
 
@@ -77,15 +98,41 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeGift: async (parent, { GiftId }, context) => {
+
+    // Removes a specific Wishlist. Wishlist _id required
+    removeWishlist: async (parent, { wishlistId }, context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { savedGifts: { GiftId } } },
+        await Wishlist.findByIdAndDelete({ _id: wishlistId });
+
+        return console.log('Wishlist removed!');
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // Adds new gift to the specified wishlist, must provide Wishlist _id
+    saveGift: async (parent, { wishlistId, title, description, image }, context) => {
+      if (context.user) {
+        const present = await Gift.create({ title: title, description: description, image: image })
+
+        const updatedWishlist = await Wishlist.findByIdAndUpdate(
+          { _id: wishlistId },
+          { $push: { presents: present } },
           { new: true }
         );
 
-        return updatedUser;
+        return updatedWishlist;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // removes a gift from a Wishlist. Must provide Gift _id
+    removeGift: async (parent, { GiftId }, context) => {
+      if (context.user) {
+        await Gift.findByIdAndDelete({ _id: GiftId });
+
+        return console.log('Gift removed!');
       }
 
       throw new AuthenticationError("You need to be logged in!");
