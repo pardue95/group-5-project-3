@@ -20,13 +20,6 @@ const AddWishlist = (props) => {
     const userID = user._id;
     console.log(user._id);
 
-    const { userParam } = useParams();
-    const { loading, data } = useQuery(userParam ? QUERY_USERINFO : QUERY_ME, {
-        variables: { username: userParam },
-    });
-    console.log("Data AddWishlist:" + data);
-
-    const user = data?.me || data?.userInfo || {};
 
     if (loading) {
         return <div>Loading...</div>;
@@ -74,7 +67,6 @@ const AddWishlist = (props) => {
             setCharacterCount(0);
         } catch (e) {
             console.error(e);
-            console.log(e);
         }
 
 
