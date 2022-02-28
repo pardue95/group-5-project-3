@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Wishlist = ({ user }) => {
+
+    console.log("wishlist index" + user.userWishlists);
     if (!user.userWishlists.length) {
         return (
             <div>

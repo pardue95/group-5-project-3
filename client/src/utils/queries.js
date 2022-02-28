@@ -11,9 +11,9 @@ export const QUERY_GIFTS = gql`
   }
 `;
 
-export const QUERY_USER = gql`
-{
-  user(_id: id) {
+export const QUERY_USERINFO = gql`
+query userInfo($id: ID) {
+  userInfo(_id: $id) {
     username
     _id
     email
