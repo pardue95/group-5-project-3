@@ -72,7 +72,8 @@ function Navbar() {
                 <>
                   <Link
                     variant="ghost"
-                    to="/profile">Me</Link>
+                    as="a"
+                    href="/profile">Me</Link>
                   <Button
                     className="linkButton"
                     variant="ghost"
