@@ -25,7 +25,7 @@ const UserList = () => {
                 <Link to={`/profile/${user._id}`} params={user._id}>
                     <button class='button' id='userBox' name={user._id} key={user._id} onClick={handleClick}>
                         <h3>{user.username}</h3>
-                        <p>{user.userWishlists.length} Unpuchased Gifts</p>
+                        <p>{user.userWishlists.length} Unpurchased Gifts</p>
                     </button>
                 </Link>
 
