@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USERINFO, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const AddWishlist = (props) => {
     const [description, setDescription] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const { userParam } = useParams();
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    const { loading, data } = useQuery(userParam ? QUERY_USERINFO : QUERY_ME, {
         variables: { username: userParam },
     });
     console.log("Data AddWishlist:" + data);
 
-    const user = data?.me || data?.user || {};
+    const user = data?.me || data?.userInfo || {};
 
     if (loading) {
         return <div>Loading...</div>;

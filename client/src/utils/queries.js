@@ -11,12 +11,11 @@ export const QUERY_GIFTS = gql`
   }
 `;
 
-
-export const QUERY_USER = gql`
-  {
-    user(_id: ID) {
-      username
+export const QUERY_USERINFO = gql`
+    query userInfo($id: ID!) {
+      userInfo(_id: $id) {
       _id
+      username
       email
       mother
       userWishlists {
@@ -31,11 +30,11 @@ export const QUERY_USER = gql`
           description
           image
         }
-
       }
     }
   }
 `;
+
 export const QUERY_USERS = gql`
   {
     users {

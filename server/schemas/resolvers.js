@@ -17,7 +17,7 @@ const resolvers = {
     },
 
     // queries a single user, must provide User _id
-    user: async (parent, { _id }) => {
+    userInfo: async (parent, { _id }) => {
       return User
         .findOne({ _id })
         .select('-__v -password');
