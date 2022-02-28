@@ -93,19 +93,20 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
-export const QUERY_USERSWISHLISTS = gql`{
-userWishlists {
-    _id
-    title
-    description
-    gender
-    presentCount
-    presents {
-      _id
-      title
-      description
-      image
-    }
-    created
-  }}
-`;
+// export const QUERY_USERSWISHLISTS = gql`{
+//   query userWishlist($id: ID!) {
+//       userWishlist(_id: $id) {
+//     _id
+//     title
+//     description
+//     gender
+//     presentCount
+//     presents {
+//       _id
+//       title
+//       description
+//       image
+//     }
+//     created
+//   }}
+// `;

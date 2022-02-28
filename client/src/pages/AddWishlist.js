@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -12,14 +12,11 @@ const AddWishlist = (props) => {
     const [newTitle, setTitle] = useState('');
     const [titleCount, setTitleCount] = useState(0);
 
-
     const [createNewWishlist] = useMutation(SAVE_WISHLIST);
 
     const { loading, data } = useQuery(QUERY_ME);
     const user = data?.me || {};
     const userID = user._id;
-    console.log(user._id);
-
 
     if (loading) {
         return <div>Loading...</div>;
@@ -48,23 +45,29 @@ const AddWishlist = (props) => {
         }
     };
 
+    const handleRedirect = () => {
+        console.log("handleRedirect Before");
+        <Redirect to="/profile" /> //NOT WORKING
+        console.log("handleRedirect After");
+    };
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const selectedGender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].innerHTML;
-        console.log("Title: " + newTitle);
-        console.log("Description: " + newDescription);
-        console.log("Gender: " + selectedGender);
 
         try {
             await createNewWishlist({
                 variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
 
-            console.log("Wishlist Saved");
+
             setTitle('');
             setTitleCount(0);
             setDescription('');
             setCharacterCount(0);
+            handleRedirect();
+
+
         } catch (e) {
             console.error(e);
         }
@@ -94,9 +97,10 @@ const AddWishlist = (props) => {
             </form>
             <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
 
-            <div>
+            {/* Move to its own page */}
+            {/* <div>
                 <GiftsList userData={user}></GiftsList>
-            </div>
+            </div> */}
         </div>
     );
 };
