@@ -56,7 +56,7 @@ const AddWishlist = (props) => {
 
         try {
             await createNewWishlist({
-                variables: { _id: userID, title: newTitle, description: newDescription, gender: selectedGender }
+                variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
 
             console.log("Wishlist Saved");
