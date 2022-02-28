@@ -74,6 +74,7 @@ function Navbar() {
                 variant="ghost"
                 to="/profile">Me</Link>
               <Button
+                className="linkButton"
                 variant="ghost"
                 to="/"
                 onClick={logout}>Logout</Button>
@@ -81,18 +82,17 @@ function Navbar() {
                 ) : (
                   <>
               <Button 
+                className="linkButton"
                 variant="ghost"
-                to="/login">
-                <Link a href="/login" variant="ghost">
+                as="a"
+                href="/login">
                 Login
-                </Link>
                 </Button>
               <Button 
                 className="linkButton"
                 variant="ghost"
                 as="a" 
                 href="/signup">
-                
                 Sign up</Button>
                 </>
                 )}

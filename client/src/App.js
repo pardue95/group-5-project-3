@@ -12,7 +12,7 @@ import theme from "../src/theme";
 
 import './App.css';
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer'

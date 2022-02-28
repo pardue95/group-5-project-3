@@ -76,6 +76,11 @@ import {
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}>
+       <Box
+            rounded={'lg'}
+            bg={useColorModeValue('beige', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} textAlign={'center'}>
@@ -179,6 +184,7 @@ import {
             {error && <div>Signup failed</div>}
           </Box>
         </Stack>
+        </Box>
       </Flex>
     );
   }
