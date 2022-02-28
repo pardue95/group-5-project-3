@@ -19,8 +19,6 @@
   },
   "dependencies": {
     "@fontsource/josefin-sans": "^4.5.4",
-    "dotenv": "^16.0.0",
-    "i": "^0.3.7",
-    "npm": "^8.5.2"
+    "dotenv": "^16.0.0"
   }
 }
