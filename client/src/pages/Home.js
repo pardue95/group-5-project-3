@@ -3,7 +3,13 @@ import UserList from '../components/UserList/index';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME_BASIC, QUERY_USERS, QUERY_USERSWISHLISTS } from '../utils/queries';
-import { Container } from '@chakra-ui/react'
+import { 
+  Container,
+  Text,
+  Box,
+  Heading,
+  Stack
+  }  from '@chakra-ui/react'
 
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
@@ -25,14 +31,21 @@ const Home = () => {
 
   return (
     <Container maxW='container.xl' py={10}>
-      <h1>Welcome</h1>
-      {loggedIn ? (
-        <div>
-          <h2>Select a User to View Their Wishlist</h2>
+      <Stack 
+        pt={10}
+        align={'center'}>
+        <Heading
+          fontSize={'2xl'}>Welcome</Heading>
+        {loggedIn ? (
+          <>
+          <Text
+            fontWeight={800}
+            fontSize={'xl'}>Select a User to View Their Wishlist</Text>
           <UserList />
           {/* <UserList users={users} /> */}
-        </div>
-      ) : null}
+        </>
+        ) : null}
+      </Stack>
     </Container>
   );
 };

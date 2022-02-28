@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+    Box,
+    Button,
+    // Image,
+    HStack,
+    VStack,
+    Text,
+    // Flex,
+    Stack
+} from '@chakra-ui/react'
+// import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../../utils/queries';
 
+
+
 const UserList = () => {
+   
 
     const { loading, error, data } = useQuery(QUERY_USERS, {
         data: {}
@@ -20,18 +33,47 @@ const UserList = () => {
 
 
     return (
-        <div>
-            {users.map(user => (
-                <Link to={`/profile/${user._id}`} params={user._id}>
-                    <button class='button' id='userBox' name={user._id} key={user._id} onClick={handleClick}>
-                        <h3>{user.username}</h3>
-                        <p>{user.userWishlists.length} Unpurchased Gifts</p>
-                    </button>
-                </Link>
+        <HStack>
+            <VStack>
+                <Box
+                    m={4}>
+                    {users.map(user => (
+                        <Button
+                            m={4}
+                            _hover={{ fontWeight: 'semibold'}}
+                            shadow='base'
+                            height='200px'
+                            width='150px'
+                            border='2px'
+                            size='md'
+                            as="a"
+                            href={`/profile/${user._id}`} 
+                            params={user._id}>
+                            <Box 
+                                class='button' 
+                                id='userBox' 
+                                name={user._id} 
+                                key={user._id} 
+                                onClick={handleClick}>
+                                <Stack
+                                    pos={'bottom'}
+                                    fontSize='sm'
+                                    alignItems='baseline'>
+                                    <Text
+                                        >{user.username}</Text>
+                                    <Text
+                                        >{user.userWishlists.length} Available Gifts</Text>
+                                </Stack>                            
+                            </Box>
+                        </Button>
+                        ))
+                    }
+                </Box>
+            </VStack>
+        </HStack>   
 
-            ))
-            }
-        </div >
+    
+       
     );
 };
 
