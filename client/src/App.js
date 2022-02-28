@@ -13,8 +13,8 @@ import theme from "../src/theme";
 import './App.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Navbar from './components/Navbar/Navbar';
+import Signup from "./components/Signup";
+import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer'
 import Profile from './pages/Profile';
 import AddWishlist from './pages/AddWishlist';

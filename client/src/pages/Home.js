@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <Container maxW='container.xl'>
+    <Container maxW='container.xl' py={10}>
       <h1>Welcome</h1>
       {loggedIn ? (
         <div>
