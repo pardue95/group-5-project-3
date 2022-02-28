@@ -1,5 +1,5 @@
 import React from 'react';
-import UserList from '../components/UserList';
+import UserList from '../components/UserList/index';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME_BASIC, QUERY_USERS, QUERY_USERSWISHLISTS } from '../utils/queries';

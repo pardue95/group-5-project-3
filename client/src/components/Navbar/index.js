@@ -21,7 +21,7 @@ import '../Navbar/style.css'
 function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
-  
+
 
   const logout = (event) => {
     event.preventDefault();
@@ -45,15 +45,15 @@ function Navbar() {
               display="flex"
               alignItems="center"
             >
-             
+
               <VisuallyHidden>
-              FULLfill! <br />
-              Babies Everywhere!
+                FULLfill! <br />
+                Babies Everywhere!
               </VisuallyHidden>
-              
+
             </chakra.a>
             <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-                FULLfill!
+              FULLfill!
             </chakra.h1>
           </Flex>
           <HStack as="nav" display="flex" alignItems="center" spacing={1}>
@@ -63,45 +63,43 @@ function Navbar() {
               color="brand.500"
               display={{ base: "none", md: "inline-flex" }}
             >
-              <Link 
+              <Link
                 variant="ghost"
                 href="/">
                 Baby Gift Registry</Link>
-              
-                {Auth.loggedIn() ? (
-                  <>
-              <Link 
-                variant="ghost"
-                to="/profile">Me</Link>
-              <Button
-                className="linkButton"
-                variant="ghost"
-                to="/"
-                onClick={logout}>Logout</Button>
-                  </>
-                ) : (
-                  <>
-              <Button 
-                className="linkButton"
-                variant="ghost"
-                as="a"
-                href="/login">
-                Login
-                </Button>
-              <Button 
-                className="linkButton"
-                variant="ghost"
-                as="a" 
-                href="/signup">
-                Sign up</Button>
+
+              {Auth.loggedIn() ? (
+                <>
+                  <Link
+                    variant="ghost"
+                    to="/profile">Me</Link>
+                  <Button
+                    className="linkButton"
+                    variant="ghost"
+                    to="/"
+                    onClick={logout}>Logout</Button>
                 </>
-                )}
-              
+              ) : (
+                <>
+                  <Button
+                    className="linkButton"
+                    variant="ghost"
+                    as="a"
+                    href="/login">
+                    Login
+                  </Button>
+                  <Button
+                    className="linkButton"
+                    variant="ghost"
+                    as="a"
+                    href="/signup">
+                    Sign up
+                  </Button>
+                </>
+              )}
+
             </HStack>
-            <Button colorScheme="brand" size="sm">
-              Get Started
-            </Button>
-            <Box display={{ base: "inline-flex", md: "none" }}>
+            <Box display={{ w:'70px', base: "inline-flex", md: "none" }}>
               <IconButton
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
@@ -132,23 +130,47 @@ function Navbar() {
                   onClick={mobileNav.onClose}
                 />
 
-                <Link w="full" variant="ghost">
+                <Button
+                  className="linkButton"
+                  variant="ghost"
+                  as="a"
+                  href="/">
                   Baby Gift Registry
-                </Link>
-                <Link to="/profile" w="full" variant="ghost">
-                  Me
-                </Link>
-                <Button to="/logout" w="full" variant="ghost">
-                  Logout
-                </Button>
-                <Button to="/login" w="full" variant="ghost">
-                  Login
-                </Button>
-                <Button to="/signup" w="full" variant="ghost">
-                  <Link a href="/signup">
-                  Sign up
-                  </Link>
-                </Button>
+                  </Button>
+
+                {Auth.loggedIn() ? (
+                  <>
+                    <Button
+                      className="linkButton"
+                      variant="ghost"
+                      as="a"
+                      href="/profile">
+                      Me
+                      </Button>
+                    <Button
+                      className="linkButton"
+                      variant="ghost"
+                      to="/"
+                      onClick={logout}>Logout</Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      className="linkButton"
+                      variant="ghost"
+                      as="a"
+                      href="/login">
+                      Login
+                    </Button>
+                    <Button
+                      className="linkButton"
+                      variant="ghost"
+                      as="a"
+                      href="/signup">
+                      Sign up
+                    </Button>
+                  </>
+                )}
               </VStack>
             </Box>
           </HStack>
