@@ -11,8 +11,8 @@ const Profile = () => {
     const { id: selectedUserID } = useParams();
     console.log("User Params: " + selectedUserID);
 
-    const { loading, data } = useQuery(selectedUserID ? QUERY_USERINFO : QUERY_ME, {
-        variables: { id: selectedUserID }
+    const { loading, error, data } = useQuery(selectedUserID ? QUERY_USERINFO : QUERY_ME, {
+        variables: { id: selectedUserID },
     });
 
     console.log(data);

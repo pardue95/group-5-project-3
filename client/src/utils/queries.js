@@ -12,28 +12,30 @@ export const QUERY_GIFTS = gql`
 `;
 
 export const QUERY_USERINFO = gql`
-query userInfo($id: ID) {
-  userInfo(_id: $id) {
-    username
-    _id
-    email
-    mother
-    userWishlists {
+    query userInfo($id: ID!) {
+      userInfo(_id: $id) {
       _id
-      title
-      description
-      gender
-      created
-      presents {
+      username
+      email
+      mother
+      userWishlists {
         _id
         title
         description
-        image
+        gender
+        created
+        presents {
+          _id
+          title
+          description
+          image
+        }
       }
 
     }
   }
-}`;
+`;
+
 export const QUERY_USERS = gql`
   {
     users {
