@@ -12,7 +12,6 @@ const AddWishlist = (props) => {
     const [newTitle, setTitle] = useState('');
     const [titleCount, setTitleCount] = useState(0);
 
-
     const [createNewWishlist] = useMutation(SAVE_WISHLIST);
 
     const { loading, data } = useQuery(QUERY_ME);
@@ -57,7 +56,7 @@ const AddWishlist = (props) => {
 
         try {
             await createNewWishlist({
-                variables: { userID, title: newTitle, description: newDescription, gender: selectedGender }
+                variables: { _id: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
 
             console.log("Wishlist Saved");
@@ -68,8 +67,6 @@ const AddWishlist = (props) => {
         } catch (e) {
             console.error(e);
         }
-
-
 
     };
 
@@ -94,9 +91,10 @@ const AddWishlist = (props) => {
             </form>
             <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
 
-            <div>
+            {/* Move to its own page */}
+            {/* <div>
                 <GiftsList userData={user}></GiftsList>
-            </div>
+            </div> */}
         </div>
     );
 };
