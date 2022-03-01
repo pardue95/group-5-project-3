@@ -20,7 +20,8 @@ const resolvers = {
     userInfo: async (parent, { _id }) => {
       return User
         .findOne({ _id })
-        .select('-__v -password');
+        .select('-__v -password')
+        .populate('userWishlists');
     },
 
     // queries all users

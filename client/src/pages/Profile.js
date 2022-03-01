@@ -16,6 +16,8 @@ const Profile = () => {
 
     const user = data?.me || data?.userInfo || {};
 
+    console.log(user);
+
     // redirect to personal profile page if username is yours
     if (Auth.loggedIn() && Auth.getProfile().data.username === selectedUserID) {
         return <Redirect to="/profile" />;
