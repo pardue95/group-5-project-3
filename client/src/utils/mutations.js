@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_GIFT = gql`
-  mutation saveGift($wishlistId: ID!, $title: String!, $description: String! $image: String!) {
+  mutation saveGift($wishlistId: ID!, $title: String!, $description: String!, $image: String!) {
     saveGift(wishlistId: $wishlistId, title: $title, description: $description, image: $image) {
     _id
     title
@@ -48,7 +48,7 @@ export const REMOVE_GIFT = gql`
   }
 `;
 
-export const SAVE_WISHLIST = gql `
+export const SAVE_WISHLIST = gql`
   mutation addWishlist($userId: ID!, $title: String!, $description: String! $gender: String!) {
     addWishlist(userId: $userId, title: $title, description: $description, gender: $gender) {
       _id
@@ -56,7 +56,7 @@ export const SAVE_WISHLIST = gql `
   }
 `;
 
-export const REMOVE_WISHLIST = gql `
+export const REMOVE_WISHLIST = gql`
   mutation removeWishlist($wishlistId: ID!) {
     removeWishlist(wishlistId: $wishlistId) {
       _id

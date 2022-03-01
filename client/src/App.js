@@ -18,7 +18,7 @@ import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer'
 import Profile from './pages/Profile';
 import AddWishlist from './pages/AddWishlist';
-// import Landing from './components/Landing'
+import EditWishlist from './pages/EditWishlist';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -59,8 +59,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile/:id?" component={Profile} />
             <Route exact path="/addWishlist" component={AddWishlist} />
-            {/* <Route exact path="/" component={SearchGifts} />
-            <Route exact path="/saved" component={SavedGifts} /> */}
+            <Route exact path="/editWishlist/:id?" component={EditWishlist} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
