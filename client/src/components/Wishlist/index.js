@@ -18,8 +18,6 @@ const Wishlist = ({ user, selectedId }) => {
         userWishlists = user.userWishlists;
     }
 
-    console.log(userWishlists);
-
     if (user._id === selectedId && user.userWishlists.length) {
 
         return (

@@ -20,10 +20,6 @@ const AddWishlist = () => {
         presentsArray = wishlistData?.userWishlist.presents;
     }
 
-    console.log(wishlistData);
-
-
-    // console.log(user);
 
     return (
         <div>
