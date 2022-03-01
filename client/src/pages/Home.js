@@ -6,7 +6,7 @@ import { QUERY_ME_BASIC, QUERY_USERS } from '../utils/queries';
 import {
   Container,
   Text,
-  Heading,
+  // Heading,
   Stack
 } from '@chakra-ui/react'
 
@@ -28,8 +28,6 @@ const Home = () => {
       <Stack 
         pt={3}
         align={'center'}>
-        <Heading
-          fontSize={'2xl'}>Welcome</Heading>
         {loggedIn ? (
           <>
             <Text

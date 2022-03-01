@@ -1,3 +1,17 @@
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    HStack,
+    Stack,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+    Link,
+  } from '@chakra-ui/react';
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
@@ -36,7 +50,7 @@ const Profile = () => {
 
 
     return (
-        <div>
+        <Box>
             <div className="flex-row mb-3">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
                     Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile
@@ -52,7 +66,7 @@ const Profile = () => {
                 </div>
 
             </div>
-        </div>
+            </Box>
     );
 };
 

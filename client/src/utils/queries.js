@@ -92,8 +92,8 @@ export const QUERY_ME_BASIC = gql`
 `;
 
 export const QUERY_USERSWISHLISTS = gql`
-  query userWishlists($id: ID!) {
-      userWishlists(_id: $id) {
+  query userWishlist($_id: ID!) {
+      userWishlist(_id: $_id) {
     _id
     description
     gender

@@ -56,16 +56,17 @@ import {
   
     return (
       <Flex
-        minH={'100vh'}
+        minH={'80vh'}
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        // bg={useColorModeValue('gray.50', 'gray.800')}
+        >
         <Box
             rounded={'lg'}
             bg={useColorModeValue('beige', 'gray.700')}
             boxShadow={'lg'}
-            p={8}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            p={3}>
+        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} textAlign={'center'}>
               Login
