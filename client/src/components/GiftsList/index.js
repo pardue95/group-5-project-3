@@ -2,8 +2,10 @@ import React from 'react';
 import { QUERY_GIFTS, QUERY_SINGLEGIFT } from '../../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { SAVE_GIFT } from '../../utils/mutations';
+import { useParams } from 'react-router-dom';
 
-const GiftsList = ({ wishlistID, userID }) => {
+const GiftsList = ({ wishlistidOld, userID }) => {
+    const { id: wishlistID } = useParams();
     const [saveGift] = useMutation(SAVE_GIFT);
 
     const { loading, error, data } = useQuery(QUERY_GIFTS, {
@@ -20,15 +22,10 @@ const GiftsList = ({ wishlistID, userID }) => {
         const selectedDescription = event.target.attributes.description.nodeValue;
         const selectedImage = event.target.attributes.image.nodeValue;
 
-        console.log("Handle Click");
-        console.log("wishlistID" + wishlistID);
-        console.log("Title " + selectedTitle);
-        console.log("Description " + selectedDescription);
-        console.log("Image " + selectedImage);
 
 
         try {
-            await saveGift({ //NOT WORKING
+            await saveGift({
                 variables: {
                     wishlistId: wishlistID, title: selectedTitle, description: selectedDescription, image: selectedImage
                 }

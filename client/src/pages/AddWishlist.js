@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
-import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { SAVE_WISHLIST } from '../utils/mutations';
-import Auth from '../utils/auth';
-import { Link } from "react-router-dom";
+
 
 const AddWishlist = (props) => {
     const [newDescription, setDescription] = useState('');
@@ -88,11 +85,6 @@ const AddWishlist = (props) => {
                 </select>
             </form>
             <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
-
-            {/* Move to its own page */}
-            {/* <div>
-                <GiftsList userData={user}></GiftsList>
-            </div> */}
         </div>
     );
 };

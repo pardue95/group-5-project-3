@@ -14,8 +14,8 @@ export const QUERY_GIFTS = gql`
 export const QUERY_USERINFO = gql`
     query userInfo($id: ID!) {
       userInfo(_id: $id) {
-      _id
       username
+      _id
       email
       mother
       userWishlists {
@@ -31,7 +31,6 @@ export const QUERY_USERINFO = gql`
           image
         }
       }
-
     }
   }
 `;
@@ -88,34 +87,24 @@ export const QUERY_ME_BASIC = gql`
       username
       email
       mother
-      gender
     }
   }
 `;
 
-// export const QUERY_USERSWISHLISTS = gql`{
-//   query userWishlist($id: ID!) {
-//       userWishlist(_id: $id) {
-//     _id
-//     title
-//     description
-//     gender
-//     presentCount
-//     presents {
-//       _id
-//       title
-//       description
-//       image
-//     }
-//     created
-//   }}
-// `;
-
-export const QUERY_SINGLEGIFT = gql`{
-bgift(_id: $id) {
+export const QUERY_USERSWISHLISTS = gql`
+  query userWishlists($id: ID!) {
+      userWishlists(_id: $id) {
     _id
     description
-    title
-    image
+    gender
+    presentCount
+    presents {
+      _id
+      title
+      description
+      image
+    }
+    created
   }
-}`;
+}
+`;

@@ -13,10 +13,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../../utils/queries';
 
-
-
 const UserList = () => {
-   
 
     const { loading, error, data } = useQuery(QUERY_USERS, {
         data: {}
@@ -25,12 +22,10 @@ const UserList = () => {
     if (error) return <div>Error {error}</div>;
 
     const users = data.users;
-    console.log(users);
 
     const handleClick = async (event) => {
 
     };
-
 
     return (
         <HStack>
@@ -47,33 +42,30 @@ const UserList = () => {
                             border='2px'
                             size='sm'
                             as="a"
-                            href={`/profile/${user._id}`} 
+                            href={`/profile/${user._id}`}
                             params={user._id}>
-                            <Box 
-                                class='button' 
-                                id='userBox' 
-                                name={user._id} 
-                                key={user._id} 
+                            <Box
+                                className='button'
+                                id='userBox'
+                                name={user._id}
+                                key={user._id}
                                 onClick={handleClick}>
                                 <Stack
                                     pos={'bottom'}
                                     fontSize='sm'
                                     alignItems='baseline'>
                                     <Text
-                                        >{user.username}</Text>
-                                    <Text
-                                        >{user.userWishlists.length} Available Gifts</Text>
-                                </Stack>                            
-                            </Box>
-                        </Button>
-                        ))
+                                    >{user.username}</Text>
+                                    <Text>
+                                        {user.userWishlists.length} Available Wishlists</Text>
+                                </Stack >
+                            </Box >
+                        </Button >
+                    ))
                     }
-                </Box>
-            </VStack>
-        </HStack>   
-
-    
-       
+                </Box >
+            </VStack >
+        </HStack>
     );
 };
 
