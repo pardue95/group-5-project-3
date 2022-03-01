@@ -20,7 +20,7 @@ db.once('open', async () => {
         const mother = true;
         //faker.random.boolean();
 
-        //console.log("Username: " + username + " Email: " + email + " Password: " + password + " Mother: " + mother);
+
         userData.push({ username, email, password, mother });
     }
 

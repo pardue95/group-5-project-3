@@ -22,11 +22,6 @@ const GiftsList = ({ wishlistidOld, userID }) => {
         const selectedDescription = event.target.attributes.description.nodeValue;
         const selectedImage = event.target.attributes.image.nodeValue;
 
-        console.log("Handle Click");
-        console.log("wishlistID" + wishlistID);
-        console.log("Title " + selectedTitle);
-        console.log("Description " + selectedDescription);
-        console.log("Image " + selectedImage);
 
 
         try {
