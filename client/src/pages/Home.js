@@ -6,10 +6,10 @@ import { QUERY_ME_BASIC, QUERY_USERS} from '../utils/queries';
 import { 
   Container,
   Text,
-  Box,
   Heading,
-  Stack
+  Stack,
   }  from '@chakra-ui/react'
+  import { Image } from '@chakra-ui/image'
 
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
@@ -27,9 +27,9 @@ const Home = () => {
   };
 
   return (
-    <Container maxW='container.xl' py={10}>
+    <Container maxW='container.xl'>
       <Stack 
-        pt={10}
+        pt={3}
         align={'center'}>
         <Heading
           fontSize={'2xl'}>Welcome</Heading>
