@@ -27,7 +27,7 @@ const AddWishlist = () => {
             <div>
                 <h3>Added Gifts</h3>
                 {presentsArray && presentsArray.map(gift => {
-                    <button class='button' id='giftBox' name={gift._id} key={gift._id} >
+                    <button className='button' id='giftBox' name={gift._id} key={gift._id} >
                         <h3>{gift.title}</h3>
                         <p>{gift.description}</p>
                         {/* <p>Unpuchased Gifts: {wishlist.presents.length}</p> */}
