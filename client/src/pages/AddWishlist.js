@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { SAVE_WISHLIST } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
 
 const AddWishlist = (props) => {
     const [newDescription, setDescription] = useState('');
@@ -45,11 +46,7 @@ const AddWishlist = (props) => {
         }
     };
 
-    const handleRedirect = () => {
-        console.log("handleRedirect Before");
-        <Redirect to="/profile" /> //NOT WORKING
-        console.log("handleRedirect After");
-    };
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -60,12 +57,7 @@ const AddWishlist = (props) => {
                 variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
 
-
-            setTitle('');
-            setTitleCount(0);
-            setDescription('');
-            setCharacterCount(0);
-            handleRedirect();
+            window.location.replace("/profile");
 
 
         } catch (e) {
