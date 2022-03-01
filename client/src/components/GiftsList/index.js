@@ -1,5 +1,5 @@
 import React from 'react';
-import { QUERY_GIFTS } from '../../utils/queries';
+import { QUERY_GIFTS, QUERY_SINGLEGIFT } from '../../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { SAVE_GIFT } from '../../utils/mutations';
 
@@ -16,15 +16,16 @@ const GiftsList = ({ wishlistID, userID }) => {
     const potentialGifts = data.bgifts;
 
     const handleClick = async (event) => {
-        const selectedTitle = event.target.title;
-        const selectedDescription = event.target.description;
-        const selectedImage = event.target.image;
+        const selectedTitle = event.target.attributes.title.nodeValue;
+        const selectedDescription = event.target.attributes.description.nodeValue;
+        const selectedImage = event.target.attributes.image.nodeValue;
 
         console.log("Handle Click");
-        console.log("Gift ID" + event.target.name);
         console.log("wishlistID" + wishlistID);
-        console.log("userID " + userID);
-        console.log(event.target);
+        console.log("Title " + selectedTitle);
+        console.log("Description " + selectedDescription);
+        console.log("Image " + selectedImage);
+
 
         try {
             await saveGift({ //NOT WORKING
@@ -41,9 +42,7 @@ const GiftsList = ({ wishlistID, userID }) => {
     return (
         <div>
             {potentialGifts.map(gift => (
-                //console.log(`Gift ID: ${gift._id}  -- Title: ${gift.title} -- Descr: ${gift.description}`)
-
-                <button class='button' id='giftBox' giftID={gift._id} title={gift.title}
+                <button class='button' id='giftBox' key={gift._id} title={gift.title}
                     description={gift.description} image={gift.image} onClick={handleClick}>
                     {gift.title}
                     <br /> <br />

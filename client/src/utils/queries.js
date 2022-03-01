@@ -110,3 +110,12 @@ export const QUERY_ME_BASIC = gql`
 //     created
 //   }}
 // `;
+
+export const QUERY_SINGLEGIFT = gql`{
+bgift(_id: $id) {
+    _id
+    description
+    title
+    image
+  }
+}`;
