@@ -27,6 +27,15 @@
 .App-link {
   color: #61dafb;
 }
+
+body {
+  background-image: url("../../client/src/images/bgHome.jpeg")!important;
+  height: 100vh;
+  width: 100%;
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+}
+
 Footer {
   position: absolute;
   bottom: 0;

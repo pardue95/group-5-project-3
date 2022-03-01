@@ -6,10 +6,10 @@ import { QUERY_ME_BASIC, QUERY_USERS, QUERY_USERSWISHLISTS } from '../utils/quer
 import { 
   Container,
   Text,
-  Box,
   Heading,
-  Stack
+  Stack,
   }  from '@chakra-ui/react'
+  import { Image } from '@chakra-ui/image'
 
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);

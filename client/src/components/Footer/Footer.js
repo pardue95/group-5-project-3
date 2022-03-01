@@ -65,12 +65,12 @@
 
 import { ButtonGroup, IconButton, Stack, Text, Container } from '@chakra-ui/react'
 import * as React from 'react'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 
 const Footer = () => (
     
-  <Container m={4} p={6} w='full' px={{ base: 6, sm: 8 }} py={20}
+  <Container m={4} p={6} w='full' px={{ base: 6, sm: 8 }} 
    position='absolute' bottom={10} as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>
     <Stack spacing={{ base: '4', md: '5' }}>
       <Stack justify="space-between" direction="row" align="center">

@@ -6,7 +6,6 @@ import {
     Input,
     InputGroup,
     HStack,
-    InputRightElement,
     Stack,
     Button,
     Heading,
