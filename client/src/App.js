@@ -7,16 +7,18 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from "../src/theme";
 
-// import SearchGifts from './pages/SearchGifts';
-// import SavedGifts from './pages/SavedGifts';
-import Navbar from './components/Navbar';
 import './App.css';
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Navbar from './components/Navbar/index';
+import Footer from './components/Footer/Footer'
 import Profile from './pages/Profile';
 import AddWishlist from './pages/AddWishlist';
+import EditWishlist from './pages/EditWishlist';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,6 +46,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ChakraProvider theme={theme}>
     <ApolloProvider client={client}>
       <Router>
         <>
@@ -52,15 +55,16 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile/:username?" component={Profile} />
+            <Route exact path="/profile/:id?" component={Profile} />
             <Route exact path="/addWishlist" component={AddWishlist} />
-            {/* <Route exact path="/" component={SearchGifts} />
-            <Route exact path="/saved" component={SavedGifts} /> */}
+            <Route exact path="/editWishlist/:id?" component={EditWishlist} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
+        <Footer />
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
   );
 }
 

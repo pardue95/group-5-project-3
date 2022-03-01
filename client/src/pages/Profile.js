@@ -4,24 +4,21 @@ import { Redirect, useParams } from 'react-router-dom';
 import Wishlist from '../components/Wishlist';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USERINFO, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-    const { username: userParam } = useParams();
-    console.log("User Params: " + userParam);
+    const { id: selectedUserID } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
+    const { loading, error, data } = useQuery(selectedUserID ? QUERY_USERINFO : QUERY_ME, {
+        variables: { id: selectedUserID },
     });
 
-    console.log(data);
-    console.log(data?.me);
-    console.log(data?.user);
-    const user = data?.me || data?.user || {};
+
+    const user = data?.me || data?.userInfo || {};
 
     // redirect to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === selectedUserID) {
         return <Redirect to="/profile" />;
     }
 
@@ -43,7 +40,7 @@ const Profile = () => {
         <div>
             <div className="flex-row mb-3">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile.
                 </h2>
 
                 {/* {user && (

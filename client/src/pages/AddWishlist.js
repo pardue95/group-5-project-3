@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import GiftsList from '../components/GiftsList';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
+import { SAVE_WISHLIST } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
 
 const AddWishlist = (props) => {
-    const [description, setDescription] = useState('');
+    const [newDescription, setDescription] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
-    const { userParam } = useParams();
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
-    });
-    const user = data?.me || data?.user || {};
+    const [newTitle, setTitle] = useState('');
+    const [titleCount, setTitleCount] = useState(0);
+
+    const [createNewWishlist] = useMutation(SAVE_WISHLIST);
+
+    const { loading, data } = useQuery(QUERY_ME);
+    const user = data?.me || {};
+    const userID = user._id;
 
     if (loading) {
         return <div>Loading...</div>;
@@ -28,17 +33,37 @@ const AddWishlist = (props) => {
         );
     }
 
-    const handleChange = (event) => {
+    const handleDescriptionChange = (event) => {
         if (event.target.value.length <= 280) {
             setDescription(event.target.value);
             setCharacterCount(event.target.value.length);
         }
     };
+    const handleTitleChange = (event) => {
+        if (event.target.value.length <= 280) {
+            setTitle(event.target.value);
+            setTitleCount(event.target.value.length);
+        }
+    };
+
+
 
     const handleFormSubmit = async (event) => {
-        // event.preventDefault();
+        event.preventDefault();
+        const selectedGender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].innerHTML;
 
-        console.log(event);
+        try {
+            await createNewWishlist({
+                variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
+            });
+
+            window.location.replace("/profile");
+
+
+        } catch (e) {
+            console.error(e);
+        }
+
 
 
     };
@@ -47,15 +72,13 @@ const AddWishlist = (props) => {
     return (
         <div>
             <h2>Create a New Wishlist</h2>
-            <form
-                onSubmit={handleFormSubmit}//NOT WORKING
-            >
+            <form>
                 <label for='title'>Wishlist Title:  </label>
-                <input type="text" id='title' name='title' /> <br /><br />
+                <input type="text" id='title' name='title' value={newTitle} onChange={handleTitleChange} /> <br /><br />
                 <textarea
                     placeholder='Leave a note for your guests...'
-                    value={description}
-                    onChange={handleChange}
+                    value={newDescription}
+                    onChange={handleDescriptionChange}
                 ></textarea><br />
                 <label for='gender'>Baby's Gender  </label>
                 <select id='gender' name='gender'>
@@ -64,11 +87,12 @@ const AddWishlist = (props) => {
                     <option value='n/a'>N/A</option>
                 </select>
             </form>
-            <button type='submit'>Save New Wishlist</button>
+            <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
 
-            <div>
+            {/* Move to its own page */}
+            {/* <div>
                 <GiftsList userData={user}></GiftsList>
-            </div>
+            </div> */}
         </div>
     );
 };

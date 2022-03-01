@@ -17,7 +17,7 @@ const resolvers = {
     },
 
     // queries a single user, must provide User _id
-    user: async (parent, { _id }) => {
+    userInfo: async (parent, { _id }) => {
       return User
         .findOne({ _id })
         .select('-__v -password');
@@ -85,7 +85,7 @@ const resolvers = {
     // Adds a new Wishlist to the userWishlist array of a specific User. Must provide User _id
     addWishlist: async (parent, { userId, title, description, gender }, context) => {
       if (context.user) {
-        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender})
+        const userWishlist = await Wishlist.create({ title: title, description: description, gender: gender })
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: userId },
