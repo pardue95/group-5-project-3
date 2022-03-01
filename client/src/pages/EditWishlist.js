@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { QUERY_ME, QUERY_USERSWISHLISTS } from '../utils/queries';
 
 const AddWishlist = () => {
-    const { _id: wishlistID } = useParams();
+    const { id: wishlistID } = useParams();
     const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
     const user = meData?.me || {};
     const { loading: wishlistLoading, error: wishlistError, data: wishlistData } = useQuery(QUERY_USERSWISHLISTS, { //NOT WORKING
@@ -20,6 +20,7 @@ const AddWishlist = () => {
         presentsArray = wishlistData?.userWishlist.presents;
     }
 
+    console.log(wishlistID);
     console.log(wishlistData);
 
 
