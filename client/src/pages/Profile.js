@@ -9,15 +9,11 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
     const { id: selectedUserID } = useParams();
-    console.log("User Params: " + selectedUserID);
 
     const { loading, error, data } = useQuery(selectedUserID ? QUERY_USERINFO : QUERY_ME, {
         variables: { id: selectedUserID },
     });
 
-    // console.log(data);
-    // console.log(data?.me.username);
-    // console.log(data?.userInfo);
     const user = data?.me || data?.userInfo || {};
 
     // redirect to personal profile page if username is yours

@@ -16,8 +16,9 @@ const Wishlist = ({ user, selectedId }) => {
             <div>
                 <h3>{user.username} has no Wishlists</h3>
             </div>
-
         );
+    } else {
+        userWishlists = user.userWishlists;
     }
 
     if (user._id === selectedId && user.userWishlists.length) {

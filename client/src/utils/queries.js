@@ -94,7 +94,8 @@ export const QUERY_ME_BASIC = gql`
 `;
 
 export const QUERY_USERSWISHLISTS = gql`{
-userWishlists {
+  query userWishlists($id: ID!) {
+      userWishlists(_id: $id) {
     _id
     title
     description
