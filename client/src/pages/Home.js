@@ -14,7 +14,7 @@ import {
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
   const { data: usersData, isLoading } = useQuery(QUERY_USERS);
-  // const { data: userDatas } = useQuery(QUERY_USERSWISHLISTS);
+  // const { data: userDatas } = useQuery(QUERY_ONE_WISHLIST);
 
   const loggedIn = Auth.loggedIn();
 
