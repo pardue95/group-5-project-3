@@ -30,9 +30,9 @@ const Home = () => {
   };
 
   return (
-    <Container maxW='container.xl' py={10}>
+    <Container maxW='container.xl'>
       <Stack 
-        pt={10}
+        pt={3}
         align={'center'}>
         <Heading
           fontSize={'2xl'}>Welcome</Heading>

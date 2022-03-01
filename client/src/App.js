@@ -50,9 +50,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <>
-
           <Navbar />
-          {/* <Landing /> */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
@@ -63,8 +61,8 @@ function App() {
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
-        <Footer />
       </Router>
+      <Footer />
     </ApolloProvider>
     </ChakraProvider>
   );
