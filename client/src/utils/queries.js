@@ -87,7 +87,6 @@ export const QUERY_ME_BASIC = gql`
       username
       email
       mother
-      gender
     }
   }
 `;

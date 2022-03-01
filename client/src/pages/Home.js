@@ -16,9 +16,6 @@ const Home = () => {
   const { data: usersData, isLoading } = useQuery(QUERY_USERS);
   // const { data: userDatas } = useQuery(QUERY_USERSWISHLISTS);
 
-
-
-
   const loggedIn = Auth.loggedIn();
 
   if (isLoading) return <div>Loading ...</div>
@@ -38,7 +35,7 @@ const Home = () => {
           <>
             <Text
               fontWeight={800}
-              fontSize={'xl'}>Select a User to View Their Wishlist</Text>
+              fontSize={'xl'}>Select a User to View Their Profile</Text>
             <UserList />
             {/* <UserList users={users} /> */}
           </>

@@ -13,10 +13,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../../utils/queries';
 
-
-
 const UserList = () => {
-
 
     const { loading, error, data } = useQuery(QUERY_USERS, {
         data: {}
@@ -29,7 +26,6 @@ const UserList = () => {
     const handleClick = async (event) => {
 
     };
-
 
     return (
         <HStack>
@@ -48,31 +44,48 @@ const UserList = () => {
                             as="a"
                             href={`/profile/${user._id}`}
                             params={user._id}>
+<<<<<<< HEAD
+    <Box
+        class='button'
+        id='userBox'
+        name={user._id}
+        key={user._id}
+=======
                             <Box
-                                class='button'
+                                className='button'
                                 id='userBox'
                                 name={user._id}
                                 key={user._id}
-                                onClick={handleClick}>
-                                <Stack
-                                    pos={'bottom'}
-                                    fontSize='sm'
-                                    alignItems='baseline'>
-                                    <Text
-                                    >{user.username}</Text>
-                                    <Text
-                                    >{user.userWishlists.length} Available Gifts</Text>
-                                </Stack>
-                            </Box>
-                        </Button>
+>>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
+        onClick={handleClick}>
+        <Stack
+            pos={'bottom'}
+            fontSize='sm'
+            alignItems='baseline'>
+            <Text
+            >{user.username}</Text>
+            <Text
+<<<<<<< HEAD
+            >{user.userWishlists.length} Available Gifts</Text>
+        </Stack>
+=======
+                                        >{user.userWishlists.length} Available Wishlists</Text>
+                                </Stack >                            
+>>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
+                            </Box >
+                        </Button >
                     ))
                     }
-                </Box>
-            </VStack>
-        </HStack>
+                </Box >
+            </VStack >
+<<<<<<< HEAD
+        </HStack >
 
 
 
+=======
+        </HStack>   
+>>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
     );
 };
 
