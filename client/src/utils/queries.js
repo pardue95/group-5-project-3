@@ -96,7 +96,6 @@ export const QUERY_USERSWISHLISTS = gql`
   query userWishlists($id: ID!) {
       userWishlists(_id: $id) {
     _id
-    title
     description
     gender
     presentCount

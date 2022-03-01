@@ -2,7 +2,7 @@ import React from 'react';
 import UserList from '../components/UserList/index';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME_BASIC, QUERY_USERS, QUERY_USERSWISHLISTS } from '../utils/queries';
+import { QUERY_ME_BASIC, QUERY_USERS} from '../utils/queries';
 import { 
   Container,
   Text,
@@ -14,7 +14,7 @@ import {
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
   const { data: usersData, isLoading } = useQuery(QUERY_USERS);
-  const { data: userDatas } = useQuery(QUERY_USERSWISHLISTS);
+  // const { data: userDatas } = useQuery(QUERY_USERSWISHLISTS);
 
 
 

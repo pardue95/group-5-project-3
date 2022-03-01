@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { SAVE_WISHLIST } from '../utils/mutations';
 
+
 const AddWishlist = (props) => {
     const [newDescription, setDescription] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -84,7 +85,6 @@ const AddWishlist = (props) => {
                 </select>
             </form>
             <button type='submit' onClick={handleFormSubmit}>Save New Wishlist</button>
-
         </div>
     );
 };

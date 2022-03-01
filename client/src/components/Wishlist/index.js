@@ -65,8 +65,11 @@ const Wishlist = ({ user, selectedId }) => {
                     ))
                     }
                 </div>
+
             </div>
         );
+    } else {
+        userWishlists = user.userWishlists;
     }
 };
 
