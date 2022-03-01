@@ -21,9 +21,6 @@ const Wishlist = ({ user }) => {
         userWishlists = user.userWishlists;
     }
 
-    const handleClick = () => {
-
-    };
 
     return (
         <div>
@@ -36,15 +33,14 @@ const Wishlist = ({ user }) => {
             <div>
                 {userWishlists.map(wishlist => (
                     <Link to={`/editWishlist/${wishlist._id}`} user={user}>
-                        <button class='button' id='userBox' name={wishlist._id} key={wishlist._id} onClick={handleClick}>
+                        <button class='button' id='userBox' name={wishlist._id} key={wishlist._id}>
                             <h3>{wishlist.title}</h3>
                             <p>Gender: {wishlist.gender}</p>
                             <p>Description: {wishlist.description} </p>
                             {/* <p>Unpuchased Gifts: {wishlist.presents.length}</p> */}
                         </button>
                     </Link>
-                ))
-                }
+                ))}
             </div>
         </div>
 

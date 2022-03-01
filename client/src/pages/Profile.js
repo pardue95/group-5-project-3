@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 
 import Wishlist from '../components/Wishlist';
 
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_USERINFO, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
