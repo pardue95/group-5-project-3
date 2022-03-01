@@ -15,9 +15,9 @@ const Profile = () => {
         variables: { id: selectedUserID },
     });
 
-    console.log(data);
-    console.log(data?.me);
-    console.log(data?.userInfo);
+    // console.log(data);
+    // console.log(data?.me.username);
+    // console.log(data?.userInfo);
     const user = data?.me || data?.userInfo || {};
 
     // redirect to personal profile page if username is yours
@@ -43,21 +43,15 @@ const Profile = () => {
         <div>
             <div className="flex-row mb-3">
                 <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile.
+                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile
                 </h2>
-
-                {/* {user && (
-                    <button className="btn ml-auto" onClick={handleClick}>
-                        Add Gift
-                    </button>
-                )} */}
             </div>
-
 
             <div className="flex-row justify-space-between mb-3">
                 <div className="col-12 mb-3 col-lg-8">
                     <Wishlist
                         user={user}
+                        selectedId={selectedUserID}
                     />
                 </div>
 
