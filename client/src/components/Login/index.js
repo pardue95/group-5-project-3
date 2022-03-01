@@ -4,9 +4,7 @@ import {
     FormControl,
     FormLabel,
     Input,
-    InputGroup,
     HStack,
-    InputRightElement,
     Stack,
     Button,
     Heading,
@@ -15,7 +13,6 @@ import {
     Link,
   } from '@chakra-ui/react';
   import React, { useState } from 'react';
-  import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { useMutation } from '@apollo/client';
   import { LOGIN_USER } from '../../utils/mutations';
 

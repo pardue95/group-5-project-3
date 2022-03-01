@@ -31,11 +31,11 @@ function Navbar() {
   return (
     <React.Fragment>
       <chakra.header
-        bg={bg}
         w="full"
         px={{ base: 2, sm: 4 }}
         py={4}
         shadow="md"
+        opacity="95"
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
