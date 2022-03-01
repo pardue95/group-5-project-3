@@ -13,10 +13,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../../utils/queries';
 
-
-
 const UserList = () => {
-   
 
     const { loading, error, data } = useQuery(QUERY_USERS, {
         data: {}
@@ -30,7 +27,6 @@ const UserList = () => {
     const handleClick = async (event) => {
 
     };
-
 
     return (
         <HStack>
@@ -50,7 +46,7 @@ const UserList = () => {
                             href={`/profile/${user._id}`} 
                             params={user._id}>
                             <Box 
-                                class='button' 
+                                className='button' 
                                 id='userBox' 
                                 name={user._id} 
                                 key={user._id} 
@@ -62,7 +58,7 @@ const UserList = () => {
                                     <Text
                                         >{user.username}</Text>
                                     <Text
-                                        >{user.userWishlists.length} Available Gifts</Text>
+                                        >{user.userWishlists.length} Available Wishlists</Text>
                                 </Stack>                            
                             </Box>
                         </Button>
@@ -71,9 +67,6 @@ const UserList = () => {
                 </Box>
             </VStack>
         </HStack>   
-
-    
-       
     );
 };
 
