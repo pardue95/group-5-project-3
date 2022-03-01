@@ -44,48 +44,28 @@ const UserList = () => {
                             as="a"
                             href={`/profile/${user._id}`}
                             params={user._id}>
-<<<<<<< HEAD
-    <Box
-        class='button'
-        id='userBox'
-        name={user._id}
-        key={user._id}
-=======
                             <Box
                                 className='button'
                                 id='userBox'
                                 name={user._id}
                                 key={user._id}
->>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
-        onClick={handleClick}>
-        <Stack
-            pos={'bottom'}
-            fontSize='sm'
-            alignItems='baseline'>
-            <Text
-            >{user.username}</Text>
-            <Text
-<<<<<<< HEAD
-            >{user.userWishlists.length} Available Gifts</Text>
-        </Stack>
-=======
-                                        >{user.userWishlists.length} Available Wishlists</Text>
-                                </Stack >                            
->>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
+                                onClick={handleClick}>
+                                <Stack
+                                    pos={'bottom'}
+                                    fontSize='sm'
+                                    alignItems='baseline'>
+                                    <Text
+                                    >{user.username}</Text>
+                                    <Text>
+                                        {user.userWishlists.length} Available Wishlists</Text>
+                                </Stack >
                             </Box >
                         </Button >
                     ))
                     }
                 </Box >
             </VStack >
-<<<<<<< HEAD
-        </HStack >
-
-
-
-=======
-        </HStack>   
->>>>>>> 7d9f46c3c594fc29c57ef93abdbcb6639f369244
+        </HStack>
     );
 };
 
