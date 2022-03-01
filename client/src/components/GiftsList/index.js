@@ -42,7 +42,7 @@ const GiftsList = ({ wishlistID, userID }) => {
     return (
         <div>
             {potentialGifts.map(gift => (
-                <button class='button' id='giftBox' key={gift._id} title={gift.title}
+                <button className='button' id='giftBox' key={gift._id} title={gift.title}
                     description={gift.description} image={gift.image} onClick={handleClick}>
                     {gift.title}
                     <br /> <br />

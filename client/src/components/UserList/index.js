@@ -22,7 +22,6 @@ const UserList = () => {
     if (error) return <div>Error {error}</div>;
 
     const users = data.users;
-    console.log(users);
 
     const handleClick = async (event) => {
 
