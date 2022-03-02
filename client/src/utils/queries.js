@@ -95,6 +95,7 @@ export const QUERY_ONE_WISHLIST = gql`
   query userWishlist($id: ID!) {
       userWishlist(_id: $id) {
     _id
+    title
     description
     gender
     presentCount
