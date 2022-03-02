@@ -34,13 +34,13 @@ const UserList = () => {
                     m={4}>
                     {users.map(user => (
                         <Button
-                            m={4}
+                            m={1}
                             _hover={{ fontWeight: 'semibold' }}
                             shadow='base'
-                            height='200px'
+                            height='75px'
                             width='150px'
                             border='2px'
-                            size='md'
+                            size='sm'
                             as="a"
                             href={`/profile/${user._id}`}
                             params={user._id}>

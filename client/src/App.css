@@ -27,12 +27,16 @@
 .App-link {
   color: #61dafb;
 }
-Footer {
-  position: absolute;
-  bottom: 0;
+
+body {
+  background-image: url("../../client/src/images/bgHome.jpeg")!important;
+  height: 100vh;
   width: 100%;
-  height: 2.5rem;            /* Footer height */
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+
 }
+
 
 @keyframes App-logo-spin {
   from {
