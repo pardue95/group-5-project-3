@@ -2,11 +2,9 @@ import React from 'react';
 import {
     Box,
     Button,
-    // Image,
     HStack,
     VStack,
     Text,
-    // Flex,
     Stack
 } from '@chakra-ui/react'
 // import { Link } from 'react-router-dom';
@@ -53,11 +51,13 @@ const UserList = () => {
                                 <Stack
                                     pos={'bottom'}
                                     fontSize='sm'
-                                    alignItems='baseline'>
-                                    <Text
-                                    >{user.username}</Text>
+                                    alignItems='baseline'>                                  
                                     <Text>
-                                        {user.userWishlists.length} Available Wishlists</Text>
+                                        {user.username}
+                                    </Text>
+                                    <Text>
+                                        {user.userWishlists.length} Available Wishlists
+                                    </Text>
                                 </Stack >
                             </Box >
                         </Button >

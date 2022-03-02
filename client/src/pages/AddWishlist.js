@@ -8,7 +8,6 @@ import {
     Stack,
     Button,
     Heading,
-    Text,
     Textarea,
     Radio,
     RadioGroup,
@@ -95,9 +94,6 @@ const AddWishlist = (props) => {
                         <Heading fontSize={'4xl'} textAlign={'center'}>
                             Create a new Wishlist!
                         </Heading>
-                        <Text fontSize={'lg'} color={'gray.600'}>
-                            Wishlist Title:
-                        </Text>
                     </Stack>
                     <Box
 
