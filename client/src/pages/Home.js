@@ -6,14 +6,15 @@ import { QUERY_ME_BASIC, QUERY_USERS } from '../utils/queries';
 import {
   Container,
   Text,
-  // Heading,
-  Stack
+  Heading,
+  Stack,
 } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/image'
 
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
   const { data: usersData, isLoading } = useQuery(QUERY_USERS);
-  // const { data: userDatas } = useQuery(QUERY_USERSWISHLISTS);
+  // const { data: userDatas } = useQuery(QUERY_ONE_WISHLIST);
 
   const loggedIn = Auth.loggedIn();
 
@@ -25,7 +26,7 @@ const Home = () => {
 
   return (
     <Container maxW='container.xl'>
-      <Stack 
+      <Stack
         pt={3}
         align={'center'}>
         {loggedIn ? (

@@ -35,7 +35,7 @@ const UserList = () => {
                     {users.map(user => (
                         <Button
                             m={1}
-                            _hover={{ fontWeight: 'semibold'}}
+                            _hover={{ fontWeight: 'semibold' }}
                             shadow='base'
                             height='75px'
                             width='150px'
