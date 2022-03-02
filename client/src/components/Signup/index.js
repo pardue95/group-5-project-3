@@ -17,7 +17,7 @@ import {
   import { useMutation } from "@apollo/client";
   import { ADD_USER } from "../../utils/mutations";
   import { HeartSwitch } from '@anatoliygatt/heart-switch';
-
+  import "@fontsource/josefin-sans"
   import Auth from "../../utils/auth";
 
   

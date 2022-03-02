@@ -21,6 +21,7 @@ import AddWishlist from './pages/AddWishlist';
 import EditWishlist from './pages/EditWishlist';
 import Hero from './components/Hero/Hero';
 import Home from './pages/Home'
+import "@fontsource/josefin-sans"
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -72,3 +73,5 @@ function App() {
 }
 
 export default App;
+
+// testing

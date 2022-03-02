@@ -8,9 +8,7 @@ import {
     Stack,
     Button,
     Heading,
-    Text,
     Textarea,
-    useColorModeValue,
     Radio,
     RadioGroup,
     FormHelperText
@@ -19,7 +17,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { SAVE_WISHLIST } from '../utils/mutations';
-
+import "@fontsource/josefin-sans"
 
 const AddWishlist = (props) => {
     const [newDescription, setDescription] = useState('');
@@ -67,13 +65,14 @@ const AddWishlist = (props) => {
             await createNewWishlist({
                 variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
-
+            
             window.location.replace("/profile");
-
+            
         } catch (e) {
             console.error(e);
         }
     }
+    console.log(document.getElementById('gender'))
 
 
 
@@ -95,9 +94,6 @@ const AddWishlist = (props) => {
                         <Heading fontSize={'4xl'} textAlign={'center'}>
                             Create a new Wishlist!
                         </Heading>
-                        <Text fontSize={'lg'} color={'gray.600'}>
-                            Wishlist Title:
-                        </Text>
                     </Stack>
                     <Box
 

@@ -4,6 +4,16 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { QUERY_ME, QUERY_ONE_WISHLIST } from '../utils/queries';
 import { REMOVE_GIFT } from '../utils/mutations';
+import {
+    HStack,
+    VStack,
+    Box,
+    Heading,
+    Text,
+    Button,
+    Stack
+} from '@chakra-ui/react'
+import "@fontsource/josefin-sans"
 
 const EditWishlist = () => {
     const { id: wishlistID } = useParams();
@@ -39,25 +49,49 @@ const EditWishlist = () => {
 
     if (!yourWishlist) {
         return (
-            <div>
-                <h1>Its A... {babyGender} </h1>
-                < h2 > {wishlistData?.userWishlist.title}</h2>
-                <h3>{wishlistData?.userWishlist.description}</h3>
-                <div>
-                    <div>
-                        {presentsArray.map(gift => (
-                            <button className='button' id='giftBox' key={gift._id} title={gift.title}
-                                description={gift.description} image={gift.image} >
-                                {gift.title}
-                                <br /> <br />
-                                {gift.description}
-                                {/* <img src={gift.image} alt={gift.image} /> */}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        )
+            <HStack>
+                <VStack>
+                    <Stack>
+                        <Box
+                            align={'center'}>
+                            <Heading
+                                align={'center'}
+                                fontSize='3xl'>
+                            Its A... {babyGender} 
+                            </Heading>
+                            <Text
+                                fontSize='lg'
+                                align={'center'}>
+                                Title: {wishlistData?.userWishlist.title}  
+                            </Text>
+                            <Text
+                                fontSize='lg'
+                                align={'center'}>
+                                Description: {wishlistData?.userWishlist.description}  
+                            </Text>
+                        </Box>
+                        <Box>
+                            {presentsArray.map(gift => (
+                                <Button
+                                    width='100px'
+                                    height='200px'
+                                    className='button'
+                                    id='giftBox'
+                                    key={gift._id}
+                                    title={gift.title}
+                                    description={gift.description}
+                                    image={gift.image}>    
+                                    {gift.title}
+                                    <br /> <br />
+                                    {gift.description}
+                                </Button>
+                            ))
+                            }
+                        </Box>
+                    </Stack>
+                </VStack>
+            </HStack>
+        );
     };
 
     const handleRemove = async (event) => {
@@ -77,32 +111,68 @@ const EditWishlist = () => {
     };
 
     return (
-        <div>
-            <h2>Editing {wishlistData?.userWishlist.title}'s Wishlist</h2>
-            <div>
-                <h3>Added Gifts</h3>
-                <div>
-                    {presentsArray.map(gift => (
-                        <button className='buttonDelete' id='giftBox' key={gift._id} giftId={gift._id} title={gift.title}
-                            description={gift.description} image={gift.image} onClick={handleRemove}>
-                            {gift.title}
-                            <br /> <br />
-                            {gift.description}
-                            {/* <img src={gift.image} alt={gift.image} /> */}
-                        </button>
-                    ))}
-                </div>
-            </div>
-
-            <div>
-                <h3>Select any gift you wish to add to your wishlist!</h3>
-                <h4>You can add multiple of any item by simply clicking it again</h4>
-                <GiftsList wishlistID={wishlistID} key={user._id} userID={user._id}></GiftsList>
-            </div>
-        </div>
+        <HStack>
+                <VStack>
+                    <Stack>
+                        <Box>
+                            <Heading
+                                align={'center'}
+                                fontSize='3xl'>
+                            Editing {wishlistData?.userWishlist.title}'s Wishlist 
+                            </Heading>
+                            <Text
+                                align={'center'}
+                                fontSize='3xl'>
+                                Added Gifts  
+                            </Text>
+                            <Box>
+                                {presentsArray.map(gift => (
+                                    <Button
+                                        m={1}
+                                        _hover={{ fontWeight: 'semibold' }}
+                                        shadow='base'
+                                        height='200px'
+                                        width='150px'
+                                        border='2px'
+                                        size='sm'
+                                        className='buttonDelete'
+                                        id='giftBox'
+                                        key={gift._id}
+                                        title={gift.title}
+                                        description={gift.description}
+                                        image={gift.image}
+                                        onClick={handleRemove} >
+                                        {gift.title}
+                                        <br /> <br />
+                                        {gift.description}
+                                    </Button>
+                                ))}
+                        </Box>
+                        <Box>
+                            <Heading
+                                align={'center'}
+                                fontSize='2xl'>
+                            Select any gift you wish to add to your wishlist!
+                            </Heading>
+                            <Heading
+                                m={2}
+                                align={'center'}
+                                fontSize='md'>
+                            You can add multiple of any item by simply clicking it again
+                            </Heading>
+                                <GiftsList 
+                                wishlistID={wishlistID} 
+                                key={user._id} 
+                                userID={user._id}>
+                                </GiftsList>
+                            </Box>
+                        </Box>
+                    </Stack>
+                </VStack>
+            </HStack>
     );
-
 };
+        
 
 export default EditWishlist;
 

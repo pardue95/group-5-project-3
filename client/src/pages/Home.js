@@ -10,6 +10,7 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/image'
+import "@fontsource/josefin-sans"
 
 const Home = () => {
   const { data: userData } = useQuery(QUERY_ME_BASIC);
