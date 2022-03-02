@@ -9,6 +9,7 @@ import { QUERY_GIFTS, QUERY_SINGLEGIFT } from '../../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { SAVE_GIFT } from '../../utils/mutations';
 import { useParams } from 'react-router-dom';
+import "@fontsource/josefin-sans"
 
 const GiftsList = ({ wishlistidOld, userID }) => {
     const { id: wishlistID } = useParams();
@@ -50,6 +51,8 @@ const GiftsList = ({ wishlistidOld, userID }) => {
                 <Box>
                     {potentialGifts.map(gift => (
                     <Button
+                        width='100px'
+                        height='200px'
                         className='button'
                         id='giftBox'
                         key={gift._id}

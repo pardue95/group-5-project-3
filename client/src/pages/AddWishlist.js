@@ -17,7 +17,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { SAVE_WISHLIST } from '../utils/mutations';
-
+import "@fontsource/josefin-sans"
 
 const AddWishlist = (props) => {
     const [newDescription, setDescription] = useState('');

@@ -13,10 +13,12 @@ import {
   VStack,
   IconButton,
   CloseButton,
+  Text
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Auth from '../../utils/auth'
 import '../Navbar/style.css'
+import "@fontsource/josefin-sans"
 
 function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
@@ -48,18 +50,19 @@ function Navbar() {
             >
 
               <VisuallyHidden>
-                FULLfill! <br />
+                FULLfill!
                 Babies Everywhere!
               </VisuallyHidden>
 
             </chakra.a>
             <chakra.h1 
-            as="a"
-            href="/"
-            fontSize="xl" 
-            fontWeight="medium" ml="2">
-              FULLfill!
+              as="a"
+              href="/"
+              fontSize="3xl" 
+              fontWeight="700" ml="2">
+                FULLfill!
             </chakra.h1>
+              <Box>babies everywhere!</Box>
           </Flex>
           <HStack as="nav" display="flex" alignItems="center" spacing={1}>
             <HStack

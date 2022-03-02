@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { QUERY_USERINFO } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import "@fontsource/josefin-sans"
 
 const Wishlist = ({ user, selectedId }) => {
 
@@ -50,7 +51,7 @@ const Wishlist = ({ user, selectedId }) => {
                                 border='2px'
                                 size='sm'
                                 as='a'
-                                href='{`/editWishlist/${wishlist._id}`}'
+                                href={`/editWishlist/${wishlist._id}`}
                                 selectedId={selectedId}
                                 className='button'
                                 id='userBox'

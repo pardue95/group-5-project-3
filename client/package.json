@@ -12,6 +12,7 @@
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@fontsource/josefin-sans": "^4.5.4",
     "@gemeente-denhaag/ctalink": "^0.1.1-alpha.34",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

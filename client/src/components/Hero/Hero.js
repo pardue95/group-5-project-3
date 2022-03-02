@@ -11,6 +11,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import image from "../../images/girlBoy.jpg";
+import "@fontsource/josefin-sans"
 
 const Hero = () => {
   
