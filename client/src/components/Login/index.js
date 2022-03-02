@@ -52,6 +52,8 @@ import {
       email: '',
       password: '',
     });
+
+    window.location.replace('/home');
   };
   
     return (
