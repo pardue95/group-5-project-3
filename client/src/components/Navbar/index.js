@@ -40,6 +40,7 @@ function Navbar() {
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
             <chakra.a
+              as="a"
               href="/"
               title="Fullfill!"
               display="flex"
@@ -52,7 +53,11 @@ function Navbar() {
               </VisuallyHidden>
 
             </chakra.a>
-            <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
+            <chakra.h1 
+            as="a"
+            href="/"
+            fontSize="xl" 
+            fontWeight="medium" ml="2">
               FULLfill!
             </chakra.h1>
           </Flex>
@@ -65,7 +70,7 @@ function Navbar() {
             >
               <Link
                 variant="ghost"
-                href="/">
+                href="/home">
                 Baby Gift Registry</Link>
 
               {Auth.loggedIn() ? (

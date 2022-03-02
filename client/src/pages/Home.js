@@ -29,8 +29,6 @@ const Home = () => {
       <Stack
         pt={3}
         align={'center'}>
-        <Heading
-          fontSize={'2xl'}>Welcome</Heading>
         {loggedIn ? (
           <>
             <Text

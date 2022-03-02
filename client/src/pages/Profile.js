@@ -1,3 +1,17 @@
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    HStack,
+    Stack,
+    Button,
+    Heading,
+    Text,
+    
+    Link,
+  } from '@chakra-ui/react';
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
@@ -36,23 +50,57 @@ const Profile = () => {
 
 
     return (
-        <div>
-            <div className="flex-row mb-3">
-                <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile
-                </h2>
-            </div>
-
-            <div className="flex-row justify-space-between mb-3">
-                <div className="col-12 mb-3 col-lg-8">
-                    <Wishlist
-                        user={user}
-                        selectedId={selectedUserID}
-                    />
-                </div>
-
-            </div>
-        </div>
+        <Flex
+            minH={'70vh'}
+            align={'center'}
+            justify={'center'}
+        >
+            <Box
+                rounded={'lg'}
+                bg={('beige')}
+                boxShadow={'lg'}
+                p={3}
+            >
+                <Stack spacing={8} mx={'auto'} maxW={'lg'} py={8} px={6}>
+                    <Stack align={'center'}>
+                        <Heading fontSize={'4xl'} textAlign={'center'}>
+                        Viewing {selectedUserID ? `${user.username}'s` : 'your'} Profile
+                        </Heading>
+                        <Text fontSize={'lg'} color={'gray.600'}>
+                        Wishlist Title:
+                        </Text>
+                    </Stack>
+                <Box
+                    rounded={'lg'}
+                    bg={('white')}
+                    boxShadow={'lg'}
+                    p={8}
+                >
+                <Stack spacing={4}>
+                    <HStack display-flex="column">
+                        <Box>
+                            <FormControl id="viewUser">
+                                <FormLabel>
+                                    Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile
+                                </FormLabel>
+                            </FormControl>
+                        </Box>
+                        <Box>
+                            <FormControl>
+                                <FormLabel>
+                                    <Wishlist
+                                        user={user}
+                                        selectedId={selectedUserID}
+                                    />
+                                </FormLabel>
+                            </FormControl>
+                        </Box>    
+                    </HStack>
+                    </Stack>
+                </Box>
+                </Stack>
+            </Box>
+        </Flex>
     );
 };
 
