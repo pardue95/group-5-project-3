@@ -16,10 +16,47 @@ const EditWishlist = () => {
         return <div>Loading...</div>;
     }
 
-    var presentsArray = wishlistData?.userWishlist.presents;
+    const presentsArray = wishlistData.userWishlist?.presents;
+    var yourWishlist = false;
 
 
-    // console.log(user);
+    for (let i = 0; i < user.userWishlists?.length; i++) {
+        const meWishlistID = user.userWishlists[i]._id;
+
+        if (wishlistID === meWishlistID) {
+            yourWishlist = true;
+        }
+    }
+
+    var babyGender = "";
+    if (wishlistData?.userWishlist.gender === "N/A") {
+        babyGender = "Baby";
+    } else {
+        babyGender = wishlistData?.userWishlist.gender
+    }
+
+    if (!yourWishlist) {
+        return (
+            <div>
+                <h1>Its A... {babyGender} </h1>
+                < h2 > {wishlistData?.userWishlist.title}</h2>
+                <h3>{wishlistData?.userWishlist.description}</h3>
+                <div>
+                    <div>
+                        {presentsArray.map(gift => (
+                            <button className='button' id='giftBox' key={gift._id} title={gift.title}
+                                description={gift.description} image={gift.image} >
+                                {gift.title}
+                                <br /> <br />
+                                {gift.description}
+                                {/* <img src={gift.image} alt={gift.image} /> */}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        )
+    };
 
     return (
         <div>
@@ -46,6 +83,8 @@ const EditWishlist = () => {
             </div>
         </div>
     );
+
 };
 
 export default EditWishlist;
+

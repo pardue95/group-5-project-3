@@ -70,7 +70,7 @@ function Navbar() {
             >
               <Link
                 variant="ghost"
-                href="/">
+                href="/home">
                 Baby Gift Registry</Link>
 
               {Auth.loggedIn() ? (

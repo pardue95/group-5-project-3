@@ -25,22 +25,23 @@ const Wishlist = ({ user, selectedId }) => {
                 <h3>{user.username} has {user.userWishlists.length} Wishlist(s)</h3>
                 <div>
                     {userWishlists.map(wishlist => (
-                        <div>
-                            <h3>{wishlist.title}</h3>
-                            <p>Gender: {wishlist.gender}</p>
-                            <p>Description: {wishlist.description} </p>
-                            <p>Unpurchased Gifts: {wishlist.presents.length}</p>
-                        </div>
+                        <Link to={`/editWishlist/${wishlist._id}`} selectedId={selectedId}>
+                            <button className='button' id='userBox' name={wishlist._id} key={wishlist._id} >
+                                <div>
+                                    <h3>{wishlist.title}</h3>
+                                    <p>Gender: {wishlist.gender}</p>
+                                    <p>Description: {wishlist.description} </p>
+                                    <p>Unpurchased Gifts: {wishlist.presents.length}</p>
+                                </div>
+                            </button>
+                        </Link>
                     ))
                     }
                 </div>
-            </div>
+            </div >
         )
     }
 
-    const handleClick = () => {
-
-    }
 
     if (!selectedId) {
         return (
@@ -52,8 +53,8 @@ const Wishlist = ({ user, selectedId }) => {
 
                 <div>
                     {userWishlists.map(wishlist => (
-                        <Link to={`/editWishlist/${wishlist._id}`} user={user}>
-                            <button className='button' id='userBox' name={wishlist._id} key={wishlist._id} onClick={handleClick}>
+                        <Link to={`/editWishlist/${wishlist._id}`} selectedId={selectedId}>
+                            <button className='button' id='userBox' name={wishlist._id} key={wishlist._id} >
                                 <h3>{wishlist.title}</h3>
                                 <p>Gender: {wishlist.gender}</p>
                                 <p>Description: {wishlist.description} </p>
