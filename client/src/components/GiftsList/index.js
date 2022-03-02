@@ -33,6 +33,8 @@ const GiftsList = ({ wishlistidOld, userID }) => {
         } catch (e) {
             console.error(e);
         }
+
+        window.location.replace(`/editWishlist/${wishlistID}`);
     };
 
 
@@ -46,9 +48,7 @@ const GiftsList = ({ wishlistidOld, userID }) => {
                     {gift.description}
                     {/* <img src={gift.image} alt={gift.image} /> */}
                 </button>
-
-            ))
-            }
+            ))}
         </div >
     );
 };
