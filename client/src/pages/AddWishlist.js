@@ -13,7 +13,7 @@ import {
     Radio,
     RadioGroup,
     FormHelperText
-  } from '@chakra-ui/react';
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -25,9 +25,10 @@ const AddWishlist = (props) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [newTitle, setTitle] = useState('');
     const [titleCount, setTitleCount] = useState(0);
+    const [selectedGender, setGender] = useState('');
 
     const [createNewWishlist] = useMutation(SAVE_WISHLIST);
-    
+
     const { loading, data } = useQuery(QUERY_ME);
     const user = data?.me || {};
     const userID = user._id;
@@ -45,7 +46,7 @@ const AddWishlist = (props) => {
             </h4>
         );
     }
-    
+
     const handleDescriptionChange = (event) => {
         if (event.target.value.length <= 280) {
             setDescription(event.target.value);
@@ -60,7 +61,7 @@ const AddWishlist = (props) => {
     };
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        const selectedGender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].innerHTML;
+        console.log(selectedGender);
         try {
             await createNewWishlist({
                 variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
@@ -81,101 +82,98 @@ const AddWishlist = (props) => {
             minH={'70vh'}
             align={'center'}
             justify={'center'}
-            // bg={useColorModeValue('gray.50', 'gray.800')}
+        // bg={useColorModeValue('gray.50', 'gray.800')}
         >
-        <Box
-            rounded={'lg'}
-            bg={('beige')}
-            boxShadow={'lg'}
-            p={3}>
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={8} px={6}>
-                <Stack align={'center'}>
-                    <Heading fontSize={'4xl'} textAlign={'center'}>
-                    Create a new Wishlist!
-                    </Heading>
-                    <Text fontSize={'lg'} color={'gray.600'}>
-                    Wishlist Title:
-                    </Text>
-                </Stack>
-                <Box
-                    rounded={'lg'}
-                    bg={('white')}
-                    boxShadow={'lg'}
-                    p={8}
-                >
-                    <form onSubmit={handleFormSubmit}>
-            <Stack spacing={4}>
-              <HStack display-flex="column">
-                <Box>
-                  <FormControl id="title" isRequired>
-                    <FormLabel>Name of Wishlist:</FormLabel>
-                    <Input
-                        placeholder="Your wishlist"
-                        name="title"
-                        type="text"
-                        id="title"
-                        value={newTitle}
-                        onChange={handleTitleChange}
-                    />
-                  </FormControl>
-                </Box>
-                <br />
-                <Box>
-                  <FormControl id="message">
-                    <FormLabel>Message:</FormLabel>
-                    <Textarea
-                        placeholder='Leave a note for your guests...'
-                        value={newDescription}
-                        onChange={handleDescriptionChange}
-                    />
-                  </FormControl>
-                <Box>
-                    <FormControl id='genderControl'>
-                        <FormLabel id='genderLabel'>Baby's Gender</FormLabel>
-                            {/* <RadioGroup name='gender' id='gender' defaultValue='Girl'>
-                                <HStack spacing='24px'>
-                                <Radio value='Girl'>Girl</Radio>
-                                <Radio value='Boy'>Boy</Radio>
-                                <Radio value='N/A'>N/A</Radio>
+            <Box
+
+                rounded={'lg'}
+                bg={('beige')}
+                boxShadow={'lg'}
+                p={3}>
+                <Stack spacing={8} mx={'auto'} maxW={'lg'} py={8} px={6}>
+                    <Stack align={'center'}>
+                        <Heading fontSize={'4xl'} textAlign={'center'}>
+                            Create a new Wishlist!
+                        </Heading>
+                        <Text fontSize={'lg'} color={'gray.600'}>
+                            Wishlist Title:
+                        </Text>
+                    </Stack>
+                    <Box
+
+                        rounded={'lg'}
+                        bg={('white')}
+                        boxShadow={'lg'}
+                        p={8}
+
+                    >
+                        <form onSubmit={handleFormSubmit}>
+                            <Stack spacing={4}>
+                                <HStack display-flex="column">
+                                    <Box>
+                                        <FormControl id="title" isRequired>
+                                            <FormLabel>Name of Wishlist:</FormLabel>
+                                            <Input
+                                                placeholder="Your wishlist"
+                                                name="title"
+                                                type="text"
+                                                id="title"
+                                                value={newTitle}
+                                                onChange={handleTitleChange}
+                                            />
+                                        </FormControl>
+                                    </Box>
+                                    <br />
+                                    <Box>
+                                        <FormControl id="message">
+                                            <FormLabel>Message:</FormLabel>
+                                            <Textarea
+                                                placeholder='Leave a note for your guests...'
+                                                value={newDescription}
+                                                onChange={handleDescriptionChange}
+                                            />
+                                        </FormControl>
+                                        <Box>
+                                            <FormControl >
+                                                <FormLabel >Baby's Gender</FormLabel>
+                                                <RadioGroup onChange={setGender} value={selectedGender} defaultValue='Girl'>
+                                                    <HStack spacing='24px'>
+                                                        <Radio value='Girl'>Girl</Radio>
+                                                        <Radio value='Boy'>Boy</Radio>
+                                                        <Radio value='N/A'>N/A</Radio>
+                                                    </HStack>
+                                                </RadioGroup>
+                                                <FormHelperText>Please select gender</FormHelperText>
+                                            </FormControl>
+                                        </Box>
+                                    </Box>
                                 </HStack>
-                            </RadioGroup> */}
-
-                <select id='gender' name='gender'>
-                    <option value='Boy'>Boy</option>
-                    <option value='Girl'>Girl</option>
-                    <option value='n/a'>N/A</option>
-                </select>
-                        <FormHelperText>Please select gender</FormHelperText>
-                    </FormControl>
-                </Box>
-                </Box>
-              </HStack>
-              <Stack spacing={10} pt={2}>
-                <Button
-                  onClick={handleFormSubmit}
-                  type='submit'
-                  loadingText="Submitting"
-                  className="btn d-block w-100"
-                  size="lg"
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}>
-                  Save New Wishlist
-                </Button>
-              </Stack>
-            </Stack>
-            </form>
+                                <Stack spacing={10} pt={2}>
+                                    <Button
+                                        onClick={handleFormSubmit}
+                                        type='submit'
+                                        loadingText="Submitting"
+                                        className="btn d-block w-100"
+                                        size="lg"
+                                        bg={'blue.400'}
+                                        color={'white'}
+                                        _hover={{
+                                            bg: 'blue.500',
+                                        }}>
+                                        Save New Wishlist
+                                    </Button>
+                                </Stack>
+                            </Stack>
+                        </form>
+                    </Box>
+                </Stack>
             </Box>
-            </Stack>
-          </Box>
-    </Flex>
- );
-                }
+        </Flex>
+    );
+}
 
-            
-            {/* <form>
+
+{/* <form>
                 <label for='title'>Wishlist Title:  </label>
                 <input 
                 type="text" 
