@@ -10,7 +10,6 @@ import {
     Heading,
     Text,
     Textarea,
-    useColorModeValue,
     Radio,
     RadioGroup,
     FormHelperText
@@ -62,18 +61,18 @@ const AddWishlist = (props) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const selectedGender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].innerHTML;
-
         try {
             await createNewWishlist({
                 variables: { userId: userID, title: newTitle, description: newDescription, gender: selectedGender }
             });
-
+            
             window.location.replace("/profile");
-
+            
         } catch (e) {
             console.error(e);
         }
     }
+    console.log(document.getElementById('gender'))
 
 
 
@@ -85,7 +84,6 @@ const AddWishlist = (props) => {
             // bg={useColorModeValue('gray.50', 'gray.800')}
         >
         <Box
-                
             rounded={'lg'}
             bg={('beige')}
             boxShadow={'lg'}
@@ -100,13 +98,11 @@ const AddWishlist = (props) => {
                     </Text>
                 </Stack>
                 <Box
-                    
                     rounded={'lg'}
                     bg={('white')}
                     boxShadow={'lg'}
                     p={8}
-                    
-                    >
+                >
                     <form onSubmit={handleFormSubmit}>
             <Stack spacing={4}>
               <HStack display-flex="column">
@@ -134,18 +130,24 @@ const AddWishlist = (props) => {
                     />
                   </FormControl>
                 <Box>
-                    <FormControl as='gender'>
-                        <FormLabel as='gender'>Baby's Gender</FormLabel>
-                        <RadioGroup defaultValue='Girl'>
-                            <HStack spacing='24px'>
-                            <Radio value='Girl'>Girl</Radio>
-                            <Radio value='Boy'>Boy</Radio>
-                            <Radio value='N/A'>N/A</Radio>
-                            </HStack>
-                        </RadioGroup>
+                    <FormControl id='genderControl'>
+                        <FormLabel id='genderLabel'>Baby's Gender</FormLabel>
+                            {/* <RadioGroup name='gender' id='gender' defaultValue='Girl'>
+                                <HStack spacing='24px'>
+                                <Radio value='Girl'>Girl</Radio>
+                                <Radio value='Boy'>Boy</Radio>
+                                <Radio value='N/A'>N/A</Radio>
+                                </HStack>
+                            </RadioGroup> */}
+
+                <select id='gender' name='gender'>
+                    <option value='Boy'>Boy</option>
+                    <option value='Girl'>Girl</option>
+                    <option value='n/a'>N/A</option>
+                </select>
                         <FormHelperText>Please select gender</FormHelperText>
-                        </FormControl>
-                    </Box>
+                    </FormControl>
+                </Box>
                 </Box>
               </HStack>
               <Stack spacing={10} pt={2}>
