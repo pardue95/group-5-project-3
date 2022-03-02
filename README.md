@@ -26,7 +26,7 @@ An interactive online database which publicly displays expecting mother's wishli
 * Clone the [github repo](https://github.com/pardue95/group-5-project-3) to your machine.  
 * From the command line install the necessary dependencies by entering `npm install --y`.  
 * Optionally, proceed to seed the database with the command `npm run seed`. Finally type in the command `npm run develop` and the page will then display on the default web browser.
-* Alternatively, one can simply go to the deployed [heroku site](https://warm-springs-81654.herokuapp.com/) and skip the tedious task of installing the program onto one's local machine.
+* Alternatively, one can simply go to the deployed [heroku site](https://fullfillbabyregistry.herokuapp.com/) and skip the tedious task of installing the program onto one's local machine.
 
 ## Usage
 * When the user signs up for the service on the signup page, they are prompted to input whether or not they are an expecting mother or a potential gifter.  
@@ -69,4 +69,4 @@ An interactive online database which publicly displays expecting mother's wishli
 
 ## Links
 * github: https://github.com/pardue95/group-5-project-3
-* heroku: https://warm-springs-81654.herokuapp.com/
+* heroku: https://fullfillbabyregistry.herokuapp.com/
