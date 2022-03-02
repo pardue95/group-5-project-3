@@ -79,13 +79,13 @@ const AddWishlist = (props) => {
 
     return (
         <Flex
-            minH={'50vh'}
+            minH={'70vh'}
             align={'center'}
             justify={'center'}
             // bg={useColorModeValue('gray.50', 'gray.800')}
         >
         <Box
-                    
+                
             rounded={'lg'}
             bg={('beige')}
             boxShadow={'lg'}
@@ -100,6 +100,7 @@ const AddWishlist = (props) => {
                     </Text>
                 </Stack>
                 <Box
+                    
                     rounded={'lg'}
                     bg={('white')}
                     boxShadow={'lg'}
