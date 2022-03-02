@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@fontsource/josefin-sans": "^4.5.4",
+    "chakra": "^0.0.3",
     "dotenv": "^16.0.0"
   }
 }
