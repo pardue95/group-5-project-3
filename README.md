@@ -1,5 +1,5 @@
 
-# Fulfill (Baby Shower Gift Registry)
+# FULLfill (Baby Shower Gift Registry)
 Final Project (MERN) for UT-Code-camp. 3-2-22
 # Table of Contents
 
@@ -62,9 +62,8 @@ An interactive online database which publicly displays expecting mother's wishli
 
 
 ## Images
-![screenshot of deployed app](client/src/images/screen-shot-1.png?raw=true "Screenshot of deployed app")
-
-
+![screenshot of deployed app](client/src/images/screen-shot-3.png?raw=true "Screenshot of deployed app")
+![screenshot #2 of deployed app](client/src/images/screen-shot-4.png?raw=true "Screenshot #2 of deployed app")
 ![screenshot of command line](client/src/images/screen-shot-2.png?raw=true "Screenshot of command line")
 
 
