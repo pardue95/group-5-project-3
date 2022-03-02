@@ -3,12 +3,10 @@ import {
     Box,
     FormControl,
     FormLabel,
-    Input,
     HStack,
     Stack,
-    Button,
     Heading,
-    Text,
+
     
     Link,
   } from '@chakra-ui/react';
@@ -66,9 +64,6 @@ const Profile = () => {
                         <Heading fontSize={'4xl'} textAlign={'center'}>
                         Viewing {selectedUserID ? `${user.username}'s` : 'your'} Profile
                         </Heading>
-                        <Text fontSize={'lg'} color={'gray.600'}>
-                        Wishlist Title:
-                        </Text>
                     </Stack>
                 <Box
                     rounded={'lg'}
@@ -78,20 +73,21 @@ const Profile = () => {
                 >
                 <Stack spacing={4}>
                     <HStack display-flex="column">
-                        <Box>
+                        {/* <Box>
                             <FormControl id="viewUser">
                                 <FormLabel>
                                     Viewing {selectedUserID ? `${user.username}'s` : 'your'} profile
                                 </FormLabel>
                             </FormControl>
-                        </Box>
+                        </Box> */}
                         <Box>
                             <FormControl>
                                 <FormLabel>
                                     <Wishlist
+                                        border-rounded
                                         user={user}
                                         selectedId={selectedUserID}
-                                    />
+                                        />
                                 </FormLabel>
                             </FormControl>
                         </Box>    

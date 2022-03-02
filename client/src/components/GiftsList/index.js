@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+    Box,
+    HStack,
+    VStack,
+    Button
+} from '@chakra-ui/react'
 import { QUERY_GIFTS, QUERY_SINGLEGIFT } from '../../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { SAVE_GIFT } from '../../utils/mutations';
@@ -39,17 +45,27 @@ const GiftsList = ({ wishlistidOld, userID }) => {
 
 
     return (
-        <div>
-            {potentialGifts.map(gift => (
-                <button className='button' id='giftBox' key={gift._id} title={gift.title}
-                    description={gift.description} image={gift.image} onClick={handleClick}>
-                    {gift.title}
-                    <br /> <br />
-                    {gift.description}
-                    {/* <img src={gift.image} alt={gift.image} /> */}
-                </button>
-            ))}
-        </div >
+        <HStack>
+            <VStack>
+                <Box>
+                    {potentialGifts.map(gift => (
+                    <Button
+                        className='button'
+                        id='giftBox'
+                        key={gift._id}
+                        title={gift.title}
+                        description={gift.description}
+                        image={gift.image}
+                        onClick={handleClick}>
+                        {gift.title}
+                        {gift.description}
+                    </Button>
+                    ))}
+                </Box>
+
+            </VStack>
+        </HStack>
+               
     );
 };
 

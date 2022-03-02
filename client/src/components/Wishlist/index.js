@@ -1,4 +1,13 @@
 import React from 'react';
+import {
+    Box,
+    Button,
+    Heading,
+    Text,
+    HStack,
+    VStack,
+    Stack
+} from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { QUERY_USERINFO } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -21,51 +30,128 @@ const Wishlist = ({ user, selectedId }) => {
     if (user._id === selectedId && user.userWishlists.length) {
 
         return (
-            <div>
-                <h3>{user.username} has {user.userWishlists.length} Wishlist(s)</h3>
-                <div>
-                    {userWishlists.map(wishlist => (
-                        <Link to={`/editWishlist/${wishlist._id}`} selectedId={selectedId}>
-                            <button className='button' id='userBox' name={wishlist._id} key={wishlist._id} >
-                                <div>
-                                    <h3>{wishlist.title}</h3>
-                                    <p>Gender: {wishlist.gender}</p>
-                                    <p>Description: {wishlist.description} </p>
-                                    <p>Unpurchased Gifts: {wishlist.presents.length}</p>
-                                </div>
-                            </button>
-                        </Link>
-                    ))
-                    }
-                </div>
-            </div >
-        )
-    }
-
+            <HStack>
+                <VStack>
+                    <Box
+                        m={4}>
+                            <Heading
+                                size='lg'
+                                textAlign='center'>
+                                    {user.username} has {user.userWishlists.length} Wishlist(s)
+                            </Heading>
+                        <Box>
+                            {userWishlists.map(wishlist => (
+                            <Button
+                                m={1}
+                                hover={{ fontWeight: 'semibold' }}
+                                shadow='base'
+                                height='150px'
+                                width='150px'
+                                border='2px'
+                                size='sm'
+                                as='a'
+                                href='{`/editWishlist/${wishlist._id}`}'
+                                selectedId={selectedId}
+                                className='button'
+                                id='userBox'
+                                name={wishlist._id}
+                                key={wishlist._id}>
+                    <Box>
+                        <Heading
+                            size='md'
+                            textAlign='center'>
+                                {wishlist.title}
+                        </Heading>
+                        <Stack>
+                            <Text fontSize='sm'>
+                                Gender: {wishlist.gender}
+                            </Text>
+                            <Text fontSize='sm'>
+                                Description: {wishlist.description}
+                            </Text>
+                            <Text fontSize='sm'>
+                                Unpurchased Gifts: {wishlist.presents.length}
+                            </Text>
+                        </Stack>
+                    </Box>
+                        </Button>
+                                ))  
+                            }
+                        </Box>    
+                    </Box>
+                </VStack>
+            </HStack>
+            
+)}
 
     if (!selectedId) {
+
+        
         return (
-            <div>
-                <Link to="/addWishlist">
-                    <button>Create A New Wishlist</button>
-                </Link>
-
-
-                <div>
-                    {userWishlists.map(wishlist => (
-                        <Link to={`/editWishlist/${wishlist._id}`} selectedId={selectedId}>
-                            <button className='button' id='userBox' name={wishlist._id} key={wishlist._id} >
-                                <h3>{wishlist.title}</h3>
-                                <p>Gender: {wishlist.gender}</p>
-                                <p>Description: {wishlist.description} </p>
-                                <p>Unpurchased Gifts: {wishlist.giftCount}</p>
-                            </button>
-                        </Link>
-                    ))
-                    }
-                </div>
-
-            </div>
+                <HStack>
+                <VStack>
+                    <Button
+                        as="a"
+                        href='/addWishList'
+                        bg={'blue.400'}
+                        color={'black'}
+                        size='lg'
+                        type='submit'
+                        _nohover={{
+                            bg: 'blue.500',
+                        }}>
+                    Create A New Wishlist
+                    </Button>
+                    <Box
+                        m={4}>
+                            <Heading
+                                size='lg'
+                                textAlign='center'>
+                                    {user.username} has {user.userWishlists.length} Wishlist(s)
+                            </Heading>
+                        <Box>
+                            {userWishlists.map(wishlist => (
+                            <Button
+                                m={1}
+                                hover={{ fontWeight: 'semibold' }}
+                                shadow='base'
+                                height='150px'
+                                width='150px'
+                                border='2px'
+                                size='sm'
+                                as='a'
+                                href='{`/editWishlist/${wishlist._id}`}'
+                                selectedId={selectedId}
+                                className='button'
+                                id='userBox'
+                                name={wishlist._id}
+                                key={wishlist._id}>
+                    <Box>
+                        <Heading
+                            size='md'
+                            textAlign='center'>
+                                {wishlist.title}
+                        </Heading>
+                        <Stack>
+                            <Text fontSize='sm'>
+                                Gender: {wishlist.gender}
+                            </Text>
+                            <Text fontSize='sm'>
+                                Description: {wishlist.description}
+                            </Text>
+                            <Text fontSize='sm'>
+                                Unpurchased Gifts: {wishlist.giftCount}
+                            </Text>
+                        </Stack>
+                    </Box>
+                        </Button>
+                                ))  
+                            }
+                        </Box>    
+                    </Box>
+                </VStack>
+            </HStack>
+                
         );
     } else {
         userWishlists = user.userWishlists;
