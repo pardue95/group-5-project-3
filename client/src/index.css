@@ -27,3 +27,9 @@ code {
     background-color: #4CAF50!important; /* Green */
   color: white!important;
 }
+
+.buttonDelete:hover{
+    background-color: #E56565 !important; /* Green */
+  color: white!important;
+
+}
