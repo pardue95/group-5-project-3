@@ -14,6 +14,8 @@ const EditWishlist = () => {
         variables: { id: wishlistID }
     });
 
+    console.log(user);
+
     if (wishlistLoading) {
         return <div>Loading...</div>;
     }

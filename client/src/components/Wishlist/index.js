@@ -13,11 +13,11 @@ import { QUERY_USERINFO } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 
-const Wishlist = ({ user, selectedId }) => {
+const Wishlist = ({ user, selectedid }) => {
 
     var userWishlists = [];
 
-    if (user._id === selectedId && !user.userWishlists.length) {
+    if (user._id === selectedid && !user.userWishlists.length) {
         return (
             <div>
                 <h3>{user.username} has no Wishlists</h3>
@@ -27,7 +27,7 @@ const Wishlist = ({ user, selectedId }) => {
         userWishlists = user.userWishlists;
     }
 
-    if (user._id === selectedId && user.userWishlists.length) {
+    if (user._id === selectedid && user.userWishlists.length) {
 
         return (
             <HStack>
@@ -50,8 +50,8 @@ const Wishlist = ({ user, selectedId }) => {
                                 border='2px'
                                 size='sm'
                                 as='a'
-                                href='{`/editWishlist/${wishlist._id}`}'
-                                selectedId={selectedId}
+                                href={`/editWishlist/${wishlist._id}`}
+                                selectedid={selectedid}
                                 className='button'
                                 id='userBox'
                                 name={wishlist._id}
@@ -84,7 +84,7 @@ const Wishlist = ({ user, selectedId }) => {
             
 )}
 
-    if (!selectedId) {
+    if (!selectedid) {
 
         
         return (
@@ -120,8 +120,8 @@ const Wishlist = ({ user, selectedId }) => {
                                 border='2px'
                                 size='sm'
                                 as='a'
-                                href='{`/editWishlist/${wishlist._id}`}'
-                                selectedId={selectedId}
+                                href={`/editWishlist/${wishlist._id}`}
+                                selectedid={selectedid}
                                 className='button'
                                 id='userBox'
                                 name={wishlist._id}
