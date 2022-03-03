@@ -121,7 +121,7 @@ const Wishlist = ({ user, selectedId }) => {
                                 border='2px'
                                 size='sm'
                                 as='a'
-                                href='{`/editWishlist/${wishlist._id}`}'
+                                href={`/editWishlist/${wishlist._id}`}
                                 selectedId={selectedId}
                                 className='button'
                                 id='userBox'
