@@ -91,8 +91,8 @@ const EditWishlist = () => {
                     </Stack>
                 </VStack>
             </HStack>
-        );
-    };
+        )
+    }
 
     const handleRemove = async (event) => {
         const selectedId = event.target.attributes.giftId.nodeValue;
@@ -129,24 +129,20 @@ const EditWishlist = () => {
                                 {presentsArray.map(gift => (
                                     <Button
                                         m={1}
-                                        _hover={{ fontWeight: 'semibold' }}
-                                        shadow='base'
-                                        height='200px'
-                                        width='150px'
-                                        border='2px'
-                                        size='sm'
                                         className='buttonDelete'
                                         id='giftBox'
                                         key={gift._id}
+                                        giftId={gift._id}
                                         title={gift.title}
                                         description={gift.description}
                                         image={gift.image}
-                                        onClick={handleRemove} >
+                                        onClick={handleRemove}>
                                         {gift.title}
                                         <br /> <br />
                                         {gift.description}
                                     </Button>
-                                ))}
+                                    ))
+                                }
                         </Box>
                         <Box>
                             <Heading
